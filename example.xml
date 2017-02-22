@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WarningData>
 	<AlarmTypeID>1</AlarmTypeID>
-	<AlarmTime>"201702211112"</AlarmTime>
+	<AlarmTime>'2016-04-12 08:48:54.000'</AlarmTime>
 	<Score>65.2</Score>
 	<DeviceID>300</DeviceID>
 	<ChannelID>3</ChannelID>
-	<Procedure>"Closing(time,1) -> 4 -> Foot(time,1) -> 4 -> Face(time,1) -> 1 -> Foot(time,1)"
+	<Procedure>'Closing(time,1) -> 4 -> Foot(time,1) -> 4 -> Face(time,1) -> 1 -> Foot(time,1)'
 	</Procedure>
-	<PictureData>"ftp:\\10.25.18.30\foo\bar\something.jpg"</PictureData>
+	<PictureData>'ftp:\\10.25.18.30\foo\bar\something.jpg'</PictureData>
 </WarningData>

@@ -9,11 +9,11 @@ class MSSQL:
 
     def __GetConnect(self):
         if not self.db:
-            raise(NameError, "没有设置数据库信息")
+            raise(NameError, "no such database")
         self.conn = pymssql.connect(host = self.host, user = self.user, password = self.pwd, database = self.db, charset = "utf8")
         cur = self.conn.cursor()
         if not cur:
-            raise(NameError, "数据库连接失败")
+            raise(NameError, "failed when connecting db")
         else:
             return cur
 
@@ -32,10 +32,9 @@ class MSSQL:
         self.conn.close()
 
 def main():
-    ms = MSSQL(host="localhost",user="sa",pwd="123456",db="PythonWeiboStatistics")
-    resList = ms.ExecQuery("SELECT id,weibocontent FROM WeiBo")
-    for (id,weibocontent) in resList:
-        print str(weibocontent).decode("utf8")
-
+    ms = MSSQL("10.25.18.9","sa","p@ssw0rd","IVAS")
+    resList = ms.ExecQuery("SELECT * FROM PUser")
+    for (id,uname,upassword,name) in resList:
+        print str(id) + uname + upassword + name
 if __name__ =='__main__':
     main()

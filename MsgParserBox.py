@@ -24,25 +24,28 @@ class MsgParser(object):
         PictureData = dom.getElementsByTagName("PictureData")[0].childNodes[0].nodeValue
         nodeList.append(PictureData)
         return nodeList
-
+    def constr(self, nodeList):
+        query = "INSERT INTO AlarmEvent(DeviceID, ChannelID, AlarmTime, AlarmType, Score, PictrueUrl, ProcedureData) VALUES ("\
+                    + nodeList[3] +","+ nodeList[4]+"," + nodeList[1]+"," + nodeList[0]+"," + nodeList[2]+"," + nodeList[6]+"," + nodeList[5] +")"
+        return query
 def main():
     msgparser = MsgParser()
-    xml = """\
-<?xml version="1.0" encoding="UTF-8"?>
-<WarningData>
-<AlarmTypeID>1</AlarmTypeID>
-<AlarmTime>"201702211112"</AlarmTime>
-<Score>65.2</Score>
-<DeviceID>300</DeviceID>
-<ChannelID>3</ChannelID>
-<Procedure>"Closing(time,1) -> 4 -> Foot(time,1) -> 4 -> Face(time,1) -> 1 -> Foot(time,1)"</Procedure>
-<PictureData>"ftp://10.25.18.30/foo/bar/something.jpg"</PictureData>
-</WarningData>
-"""
+    xml = """<?xml version="1.0" encoding="UTF-8"?>
+    <WarningData>
+    <AlarmTypeID>1</AlarmTypeID>
+    <AlarmTime>'2016-04-12 08:48:54.000'</AlarmTime>
+    <Score>65.2</Score>
+    <DeviceID>300</DeviceID>
+    <ChannelID>3</ChannelID>
+    <Procedure>'Closing(time,1) -> 4 -> Foot(time,1) -> 4 -> Face(time,1) -> 1 -> Foot(time,1)'
+    </Procedure>
+    <PictureData>'ftp:\\10.25.18.30\\foo\\bar\\something.jpg'</PictureData>
+    </WarningData>
+    """
     msgParser = MsgParser()
     dataList = msgParser.parse(xml)
-    for data in dataList:
-        print data
+    querytest = msgParser.constr(dataList)
+    print querytest
 
 if __name__ == '__main__':
     main()

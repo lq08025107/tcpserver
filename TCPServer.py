@@ -2,6 +2,7 @@ from twisted.internet import protocol, reactor, defer, endpoints
 from twisted.protocols import basic
 import datetime
 from MsgParserBox import MsgParser
+from MyQueue import queue
 
 
 class ICBCProtocol(protocol.Protocol):
@@ -16,20 +17,21 @@ class ICBCProtocol(protocol.Protocol):
         self.factory.numProtocols = self.factory.numProtocols - 1
 
     def dataReceived(self, xmldata):
-        print xmldata
-        parser = MsgParser()
-        dataList = parser.parse(xmldata)
-        for data in dataList:
-            print data
+        print queue.qsize()
+        queue.put(xmldata)
+        #parser = MsgParser()
+        #dataList = parser.parse(xmldata)
+        #for data in dataList:
+        #    print data
 
         #self.transport.loseConnection()
 
-        now = datetime.datetime.now()
+        #now = datetime.datetime.now()
         
-        file = open("D:/tcp.txt",'a')
-        file.write(now.strftime('%Y-%m-%d %H:%M:%S')+' |  '+ xmldata)
-        file.write('\n')
-        file.close()
+        #file = open("D:/tcp.txt",'a')
+        #file.write(now.strftime('%Y-%m-%d %H:%M:%S')+' |  '+ xmldata)
+        #file.write('\n')
+        #file.close()
 
 class ICBCFactory(protocol.ServerFactory):
     protocol = ICBCProtocol
