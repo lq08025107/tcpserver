@@ -1,6 +1,15 @@
-from xml.dom.minidom import parseString
+from xml.dom.minidom import parseString, parse
 class MsgParser(object):
+    def docparse(self):
+        dom = parse("D:\\tcp.xml")
+        nodeList = []
+        AlarmTypeID = dom.getElementsByTagName("AlarmTypeID")[0].childNodes[0].nodeValue
+        nodeList.append(AlarmTypeID)
+        PictureData = dom.getElementsByTagName("PictureData")[0].childNodes[0].nodeValue
+        nodeList.append(PictureData)
+        return nodeList
     def parse(self, xmlcontent):
+        print "-----------------start to analyse---------------------"
         dom = parseString(xmlcontent)
         nodeList = []
         AlarmTypeID = dom.getElementsByTagName("AlarmTypeID")[0].childNodes[0].nodeValue
@@ -26,7 +35,8 @@ class MsgParser(object):
         return nodeList
     def constr(self, nodeList):
         query = "INSERT INTO AlarmEvent(DeviceID, ChannelID, AlarmTime, AlarmType, Score, PictrueUrl, ProcedureData) VALUES ("\
-                    + nodeList[3] +","+ nodeList[4]+"," + nodeList[1]+"," + nodeList[0]+"," + nodeList[2]+"," + nodeList[6]+"," + nodeList[5] +")"
+                    + nodeList[3] +","+ nodeList[4]+"," + "'" + nodeList[1] + "'"+ "," + nodeList[0]+"," + nodeList[2]+"," +"'"+ nodeList[6]+"'"+"," + "'" +nodeList[5]+"'" +")"
+        print query
         return query
 def main():
     msgparser = MsgParser()
@@ -43,9 +53,12 @@ def main():
     </WarningData>
     """
     msgParser = MsgParser()
+    #dataList = msgParser.docparse()
     dataList = msgParser.parse(xml)
-    querytest = msgParser.constr(dataList)
-    print querytest
+    #querytest = msgParser.constr(dataList)
+    #print querytest
+    for data in dataList:
+        print data
 
 if __name__ == '__main__':
     main()

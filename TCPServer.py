@@ -5,19 +5,33 @@ from MsgParserBox import MsgParser
 from MyQueue import queue
 
 
+class ICBCHTTP(Resource):
+    def render_Get(self, request):
+        return ''
+
+    def render_POST(self, request):
+        #pprint(request.__dict__)
+        #newdata = request.content.getvalue()
+        newdata = request.content.read()
+        print newdata
+        queue.put(newdata)
+        return ''
+
 class ICBCProtocol(protocol.Protocol):
 
     def connectionMade(self):
         self.factory.numProtocols = self.factory.numProtocols + 1
-        self.transport.write(
-            "Welcome! There are currently %d open connections.\n" %
-            (self.factory.numProtocols,))
+        
+        print "Welcome! There are currently %d open connections.\n" % (self.factory.numProtocols,)
     
     def connectionLost(self,reason):
+        print "lost a connection"
         self.factory.numProtocols = self.factory.numProtocols - 1
+        
 
-    def dataReceived(self, xmldata):
-        print queue.qsize()
+    def stringReceived(self, xmldata):
+        print xmldata
+        
         queue.put(xmldata)
         #parser = MsgParser()
         #dataList = parser.parse(xmldata)
@@ -39,13 +53,15 @@ class ICBCFactory(protocol.ServerFactory):
 
 
 
-def tw():
+def tcp():
+    #TCP server
     ICBCEndpoint = endpoints.serverFromString(reactor, "tcp:8000")
     ICBCEndpoint.listen(ICBCFactory())
     reactor.run()
 
+
 if __name__ == '__main__':
-    tw()
+    tcp()
 
 
 
