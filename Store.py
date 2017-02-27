@@ -1,13 +1,15 @@
 from MyQueue import queue
-import datetime
 from MsgParserBox import MsgParser
 from utiltool.DBOperator import MSSQL
 import GlobalParams
+from LogModule import setup_logging
+import logging
+
+setup_logging()
+logger = logging.getLogger(__name__)
 
 
-
-def store():
-    
+def start_store():
     while(True):
 
         if queue.qsize() != 0:
@@ -19,23 +21,13 @@ def store():
                 #save as db
                 insertsql = parser.constr(dataList)
                 id = ms.executeAndGetId(insertsql)
-                print id            
-                print "insert into db successfully"
+                logger.info("Message has been inserted into db successfully, id: " + str(id))
                 
                 #send to application module
                 notice_queue= GlobalParams.getNoticeProcessThread()
                 notice_queue.put(id)
-                print "notice queue now has %d message" % notice_queue.qsize()
 
             except Exception, e:
-                print "------------------------------------"
-                print Exception, ":" , e
-                #print task
                 #log as file
-                file = open("D:/tcp.txt",'a')
-                now = datetime.datetime.now()
-                file.write(now.strftime('%Y-%m-%d %H:%M:%S')+ ' |  ' +task)
-                file.write('\n')
-                file.close()
-                print "------------------------------------"
-            print queue.qsize()
+                logger.error("Error occured!!!",exc_info=True)
+

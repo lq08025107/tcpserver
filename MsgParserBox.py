@@ -9,7 +9,7 @@ class MsgParser(object):
         nodeList.append(PictureData)
         return nodeList
     def parse(self, xmlcontent):
-        print "-----------------start to analyse---------------------"
+
         dom = parseString(xmlcontent)
         nodeList = []
         AlarmTypeID = dom.getElementsByTagName("AlarmTypeID")[0].childNodes[0].nodeValue

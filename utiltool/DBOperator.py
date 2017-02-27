@@ -1,7 +1,10 @@
 # -*- coding=utf-8 -*-
 import pymssql
-import DBConfig
+
 from DBUtils.PooledDB import PooledDB
+
+from config import DBConfig
+
 
 class MSSQL(object):
     __pool = None
@@ -46,35 +49,14 @@ class MSSQL(object):
     def ExecMove(self, id, insertsql, deletesql):
 
         try:
-            
             self._cursor.execute(insertsql)
             self._cursor.execute(deletesql)
             self._conn.commit()
         except Exception, e:
-            print e
-            print "roll back"
+
             self._conn.rollback()
         self.dispose()
         
-        
-
-def event2record(id, procUserName, procTime, procRecord):
-    ms = MSSQL()
-    selectsql = "SELECT OrgID, DeviceID, DeviceName, ChannelID, AlarmTime, AlarmType, Score, PictrueUrl, ProcedureData FROM AlarmEvent where ID=" + str(id)
-    #
-    resList = ms.ExecQuery(selectsql)[0]
-    insertsql = "INSERT INTO AlarmEventRecord (OrgID, DeviceID, AlarmTime, AlarmType, ChannelID, Score, PictrueUrl, ProcUserName," \
-                "ProcTime, ProcRecord, ProcedureData) VALUES (" + "NULL" + "," + str(resList["DeviceID"]) + "," + "'"+ str(resList["AlarmTime"])+"'" +"," + str(resList["AlarmType"])\
-                + "," + str(resList["ChannelID"]) + "," + str(resList["Score"]) + "," +  "'"+str(resList["PictrueUrl"]) +"'"\
-                +"," + "'"+str(procUserName) + "'" + "," + "'" + str(procTime) +"'"+"," + "'"+str(procRecord) + "'" + ","+"'" + str(resList["ProcedureData"]) + "'" + ")"
-    deletesql = "DELETE FROM AlarmEvent where ID=" + str(id)
-
-    sql = open("D:\sql.txt", 'a')
-    sql.write(insertsql)
-    ms.ExecMove(id,  insertsql, deletesql)
-    print "Move done"
-
-    
 
 def main():
     # ms = MSSQL(host="10.25.18.9",user="sa",pwd="p@ssw0rd",db="IVAS")

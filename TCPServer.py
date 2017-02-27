@@ -1,68 +1,43 @@
 from twisted.internet import protocol, reactor, defer, endpoints
-from twisted.protocols import basic
-import datetime
-from MsgParserBox import MsgParser
-from MyQueue import queue
+import GlobalParams
+from LogModule import setup_logging
+import logging
 
-
-class ICBCHTTP(Resource):
-    def render_Get(self, request):
-        return ''
-
-    def render_POST(self, request):
-        #pprint(request.__dict__)
-        #newdata = request.content.getvalue()
-        newdata = request.content.read()
-        print newdata
-        queue.put(newdata)
-        return ''
+setup_logging()
+logger = logging.getLogger(__name__)
 
 class ICBCProtocol(protocol.Protocol):
-
     def connectionMade(self):
-        self.factory.numProtocols = self.factory.numProtocols + 1
-        
-        print "Welcome! There are currently %d open connections.\n" % (self.factory.numProtocols,)
-    
+        #self.factory.numProtocols = self.factory.numProtocols + 1
+        ip = str(self.transport.getPeer().host)
+        port = str(self.transport.getPeer().port)
+        logger.info("Client " + ip + ":" + port + "connected.")
+
+        GlobalParams.AddOneClient(self, ip)
+
     def connectionLost(self,reason):
-        print "lost a connection"
-        self.factory.numProtocols = self.factory.numProtocols - 1
-        
+        #self.factory.numProtocols = self.factory.numProtocols - 1
+        logger.info("Client " + str(self.transport.getPeer().host) + ":" + str(self.transport.getPeer().port) + "disconnected.")
+        GlobalParams.DelOneClient(str(self.transport.getPeer().host))
 
-    def stringReceived(self, xmldata):
-        print xmldata
-        
-        queue.put(xmldata)
-        #parser = MsgParser()
-        #dataList = parser.parse(xmldata)
-        #for data in dataList:
-        #    print data
+    def dataSend(self, data):
+        self.transport.write(data)
 
-        #self.transport.loseConnection()
 
-        #now = datetime.datetime.now()
-        
-        #file = open("D:/tcp.txt",'a')
-        #file.write(now.strftime('%Y-%m-%d %H:%M:%S')+' |  '+ xmldata)
-        #file.write('\n')
-        #file.close()
+    def dataReceived(self, data):
+        queue = GlobalParams.getEventProcessThread()
+        queue.put((str(self.transport.getPeer().host), data))
 
 class ICBCFactory(protocol.ServerFactory):
     protocol = ICBCProtocol
-    numProtocols=0  
 
-
-
-def tcp():
-    #TCP server
-    ICBCEndpoint = endpoints.serverFromString(reactor, "tcp:8000")
+def startTCPServer():
+    ICBCEndpoint = endpoints.serverFromString(reactor, "tcp:8800")
     ICBCEndpoint.listen(ICBCFactory())
     reactor.run()
 
-
-if __name__ == '__main__':
-    tcp()
-
+if __name__ == "__main__":
+    startTCPServer()
 
 
 

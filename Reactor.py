@@ -1,30 +1,15 @@
 from twisted.web.resource import Resource
 from twisted.internet import reactor, endpoints
 from twisted.web import server
-from MyQueue import queue
+from HTTPServer import ICBCHTTP
+from TCPServer import ICBCFactory
 from LogModule import setup_logging
 import logging
-
-from TCPServer import ICBCFactory
 
 setup_logging()
 logger = logging.getLogger(__name__)
 
-
-class ICBCHTTP(Resource):
-    def render_Get(self, request):
-        return ''
-
-    def render_POST(self, request):
-
-        #newdata = request.content.getvalue()
-        newdata = request.content.read()
-        queue.put(newdata)
-        logger.info("Received post request from host: " + str(request.client.host) + ".")
-        print queue.qsize()
-        return ''
-
-def start_http():
+def start_reactor():
     #http in reactor
     root = Resource()
     root.putChild("data", ICBCHTTP())
@@ -33,8 +18,9 @@ def start_http():
     ICBCEndpoint = endpoints.serverFromString(reactor, "tcp:8800")
     ICBCEndpoint.listen(ICBCFactory())
     #start the reactor
+    logger.info("Reactor has started.")
     reactor.run(installSignalHandlers=0)
-    
-    
+
+
 if __name__ == '__main__':
-    start_http()
+    start_reactor()

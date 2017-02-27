@@ -2,6 +2,11 @@ import Queue
 import random
 from LogicCoreModule import EventProcessThread
 from LogicCoreModule import NoticeProcessThread
+from LogModule import setup_logging
+import logging
+
+setup_logging()
+logger = logging.getLogger(__name__)
 
 class GlobalParams(object):
     EventInitCount = 3
@@ -13,7 +18,8 @@ class GlobalParams(object):
     ClientOnlineLock = False
 
 def initProcessThread():
-    print "Initlizing Process Thread ...."
+    logger.info("Start Initlizing Process Thread.")
+
     for i in range(0, GlobalParams.EventInitCount):
         eventProcessThread = EventProcessThread()
         GlobalParams.EventProcessThreads.append(eventProcessThread)
@@ -23,7 +29,8 @@ def initProcessThread():
         noticeProcessThread = NoticeProcessThread()
         GlobalParams.NoticeProcessThreads.append(noticeProcessThread)
         noticeProcessThread.start()
-    print "InitlizeProcess Thread finish"
+
+    logger.info("Finish Initlizing Process Thread.")
 
 
 def addEventProcessThread():

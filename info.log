@@ -1,0 +1,37 @@
+2017-02-27 17:17:21,098 - Reactor - INFO - Reactor has started.
+
+2017-02-27 17:17:36,039 - HTTPServer - INFO - Received post request from host: 10.25.18.9.
+
+2017-02-27 17:17:36,073 - Store - INFO - Message has been inserted into db successfully, id: 31
+
+2017-02-27 17:19:17,069 - Reactor - INFO - Reactor has started.
+
+2017-02-27 17:19:25,023 - HTTPServer - INFO - Received post request from host: 10.25.18.9.
+
+2017-02-27 17:19:25,049 - Store - ERROR - Error occured!!!
+Traceback (most recent call last):
+  File "D:\pyworkspace\TcpServer\Store.py", line 20, in start_store
+    dataList = parser.parse(task)
+  File "D:\pyworkspace\TcpServer\MsgParserBox.py", line 13, in parse
+    dom = parseString(xmlcontent)
+  File "C:\Python27\lib\xml\dom\minidom.py", line 1928, in parseString
+    return expatbuilder.parseString(string)
+  File "C:\Python27\lib\xml\dom\expatbuilder.py", line 940, in parseString
+    return builder.parseString(string)
+  File "C:\Python27\lib\xml\dom\expatbuilder.py", line 223, in parseString
+    parser.Parse(string, True)
+ExpatError: syntax error: line 1, column 0
+2017-02-27 17:27:29,256 - Reactor - INFO - Reactor has started.
+
+2017-02-27 19:11:05,716 - GlobalParams - INFO - Start Initlizing Process Thread.
+
+2017-02-27 19:11:05,717 - LogicCoreModule - INFO - Event Thread-1 Start Running
+
+2017-02-27 19:11:05,717 - LogicCoreModule - INFO - Event Thread-2 Start Running
+
+2017-02-27 19:11:05,719 - LogicCoreModule - INFO - Event Thread-3 Start Running
+
+2017-02-27 19:11:05,720 - GlobalParams - INFO - Finish Initlizing Process Thread.
+
+2017-02-27 19:11:05,721 - Reactor - INFO - Reactor has started.
+

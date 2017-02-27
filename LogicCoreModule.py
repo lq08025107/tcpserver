@@ -4,7 +4,12 @@ import Queue
 import time
 import GlobalParams
 from xml.dom import minidom
-from utiltool.DBOperator import event2record
+from utiltool.DBOperator import MSSQL
+from LogModule import setup_logging
+import logging
+
+setup_logging()
+logger = logging.getLogger(__name__)
 
 
 
@@ -20,7 +25,7 @@ class EventProcessThread(Thread):
         self.IsRunning = False
 
     def run(self):
-        print "Event " + self.getName() + " Start Running"
+        logger.info("Event " + self.getName() + " Start Running")
 
         while self.IsRunning:
             while self.ProcessQueue.not_empty:
@@ -34,8 +39,8 @@ class EventProcessThread(Thread):
                 client = GlobalParams.GetOneClient(clientID)
                 if client != None:
                     client.dataSend(RetMessage)
-            time.sleep(0.5)
-        print "Event " + self.getName() + " Stop Run"
+
+        logger.info("Event " + self.getName() + " Stop Run")
 
     def parseXml(self, data):
         Type = -1
@@ -51,8 +56,7 @@ class EventProcessThread(Thread):
                 Params[param_id] = param_value
 
         except Exception, e:
-            print e
-            print "XML parser Error!!!!!"
+            logger.error("This is not a well formed xml.", exc_info=True)
 
         return OperaterId, Type, Params
 
@@ -106,9 +110,7 @@ class EventProcessThread(Thread):
             user =  params['2'].encode("utf-8")
             time = params['3'].encode("utf-8")
             operation = params['4'].encode("utf-8")
-            #UnicodeEncodeError: 'ascii' codec can't encode characters in position 0-13: ordinal not in range(128)
-            #event2record(int(params['1']),str(params['2']),str(params['3']),str(params['4']))
-            event2record(id, user, time, operation)
+            self.event2record(id, user, time, operation)
             RetCode = 0
             # RetInfo = [(1, "11111"), (2, "22222")]
         elif type == 102:
@@ -124,9 +126,27 @@ class EventProcessThread(Thread):
             # 执行操作1=============
             print str(params)
         else:
-            print "Error Type Number!! Please Chack Interface Book"
+            logger.error("Error Type Number!! Please Chack Interface Book!!!", exc_info=True)
+
 
         return RetCode, RetInfo
+
+    def event2record(self, id, procUserName, procTime, procRecord):
+        ms = MSSQL()
+        selectsql = "SELECT OrgID, DeviceID, DeviceName, ChannelID, AlarmTime, AlarmType, Score, PictrueUrl, \
+        ProcedureData FROM AlarmEvent where ID=" + str(id)
+        resList = ms.ExecQuery(selectsql)[0]
+        insertsql = "INSERT INTO AlarmEventRecord (OrgID, DeviceID, AlarmTime, AlarmType, ChannelID, Score, PictrueUrl, ProcUserName," \
+                    "ProcTime, ProcRecord, ProcedureData) VALUES (" + "NULL" + "," + str(
+            resList["DeviceID"]) + "," + "'" + str(resList["AlarmTime"]) + "'" + "," + str(resList["AlarmType"]) \
+                    + "," + str(resList["ChannelID"]) + "," + str(resList["Score"]) + "," + "'" + str(
+            resList["PictrueUrl"]) + "'" \
+                    + "," + "'" + str(procUserName) + "'" + "," + "'" + str(procTime) + "'" + "," + "'" + str(
+            procRecord) + "'" + "," + "'" + str(resList["ProcedureData"]) + "'" + ")"
+        deletesql = "DELETE FROM AlarmEvent where ID=" + str(id)
+
+        ms.ExecMove(id, insertsql, deletesql)
+        logger.info("%s process a message and write: %s" % (procUserName, procRecord))
 
 class NoticeProcessThread(Thread):
     def __init__(self):
@@ -138,18 +158,16 @@ class NoticeProcessThread(Thread):
         self.IsRunning = False
 
     def run(self):
-        print "Notice " + self.getName() + " Start Running"
+        logger.info("Notice " + self.getName() + " Start Running")
         while self.IsRunning:
             while not self.NoticeQueue.empty():
                 data = self.NoticeQueue.get()
                 xmlstring = self.buildxml4client(str(data))
-                print "NoticeProcessThread recv data: " + str(xmlstring)
                 allClient = GlobalParams.GetAllClient()
                 for client in allClient.values():
                     client.dataSend(xmlstring)
-            time.sleep(0.5)
 
-        print "Notice " + self.getName() + " Stop Run"
+        logger.info("Notice " + self.getName() + " Stop Run")
 
     def buildxml4client(self, id):
 
