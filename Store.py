@@ -9,8 +9,9 @@ import GlobalParams
 def store():
     
     while(True):
-        ms = MSSQL()
+
         if queue.qsize() != 0:
+            ms = MSSQL()
             task=queue.get(block=True, timeout=2)
             parser = MsgParser()
             try:

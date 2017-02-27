@@ -3,7 +3,7 @@ from HTTPServer import http_tcp
 from FTPServer import ftp
 from Store import store
 import GlobalParams
-#thread to run twisted and ftp server
+# thread to run twisted and ftp server
 threads = []
 
 #application module

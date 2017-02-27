@@ -6,6 +6,8 @@ import GlobalParams
 from xml.dom import minidom
 from utiltool.DBOperator import event2record
 
+
+
 # 事件处理线程，主要处理前台对后台的操作事件
 # 不与接收线程绑定，可作为线程池使用
 class EventProcessThread(Thread):
@@ -24,7 +26,7 @@ class EventProcessThread(Thread):
             while self.ProcessQueue.not_empty:
                 message = self.ProcessQueue.get()
                 clientID = message[0]
-                operateData = message[1]
+                operateData = message[1].decode('GBK').encode('UTF-8')
                 OperaterID, Type, params = self.parseXml(operateData)
                 RetCode, RetInfo = self.process(Type, params)
                 RetMessage = self.buildXml(OperaterID, Type, RetCode, RetInfo)
@@ -48,8 +50,9 @@ class EventProcessThread(Thread):
                 param_value = param.firstChild.data
                 Params[param_id] = param_value
 
-        except Exception:
-             print "XML parser Error!!!!!"
+        except Exception, e:
+            print e
+            print "XML parser Error!!!!!"
 
         return OperaterId, Type, Params
 
@@ -99,12 +102,13 @@ class EventProcessThread(Thread):
         if type == 100:
             # 执行操作1=============
             #print str(params)
-            print params['1']
-            print params['2']
-            print params['3']
-            print params['4']
+            id = params['1'].encode("utf-8")
+            user =  params['2'].encode("utf-8")
+            time = params['3'].encode("utf-8")
+            operation = params['4'].encode("utf-8")
             #UnicodeEncodeError: 'ascii' codec can't encode characters in position 0-13: ordinal not in range(128)
-            event2record(int(params['1']),str(params['2']),str(params['3']),str(params['4']))
+            #event2record(int(params['1']),str(params['2']),str(params['3']),str(params['4']))
+            event2record(id, user, time, operation)
             RetCode = 0
             # RetInfo = [(1, "11111"), (2, "22222")]
         elif type == 102:

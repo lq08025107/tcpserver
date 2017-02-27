@@ -28,7 +28,7 @@ def http_tcp():
     ICBCEndpoint = endpoints.serverFromString(reactor, "tcp:8800")
     ICBCEndpoint.listen(ICBCFactory())
     #start the reactor
-    reactor.run()
+    reactor.run(installSignalHandlers=0)
     
     
 if __name__ == '__main__':
