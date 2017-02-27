@@ -11,13 +11,13 @@ class ICBCProtocol(protocol.Protocol):
         #self.factory.numProtocols = self.factory.numProtocols + 1
         ip = str(self.transport.getPeer().host)
         port = str(self.transport.getPeer().port)
-        logger.info("Client " + ip + ":" + port + "connected.")
+        logger.info("Client " + ip + ":" + port + " connected.")
 
         GlobalParams.AddOneClient(self, ip)
 
     def connectionLost(self,reason):
         #self.factory.numProtocols = self.factory.numProtocols - 1
-        logger.info("Client " + str(self.transport.getPeer().host) + ":" + str(self.transport.getPeer().port) + "disconnected.")
+        logger.info("Client " + str(self.transport.getPeer().host) + ":" + str(self.transport.getPeer().port) + " disconnected.")
         GlobalParams.DelOneClient(str(self.transport.getPeer().host))
 
     def dataSend(self, data):

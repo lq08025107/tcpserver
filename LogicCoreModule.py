@@ -7,6 +7,10 @@ from xml.dom import minidom
 from utiltool.DBOperator import MSSQL
 from LogModule import setup_logging
 import logging
+import sys
+
+reload(sys)
+sys.setdefaultencoding('utf8')
 
 setup_logging()
 logger = logging.getLogger(__name__)
@@ -126,27 +130,31 @@ class EventProcessThread(Thread):
             # 执行操作1=============
             print str(params)
         else:
-            logger.error("Error Type Number!! Please Chack Interface Book!!!", exc_info=True)
+            logger.error("Error Type Number!! Please Check Interface Book!!!")
 
 
         return RetCode, RetInfo
 
     def event2record(self, id, procUserName, procTime, procRecord):
         ms = MSSQL()
-        selectsql = "SELECT OrgID, DeviceID, DeviceName, ChannelID, AlarmTime, AlarmType, Score, PictrueUrl, \
-        ProcedureData FROM AlarmEvent where ID=" + str(id)
-        resList = ms.ExecQuery(selectsql)[0]
-        insertsql = "INSERT INTO AlarmEventRecord (OrgID, DeviceID, AlarmTime, AlarmType, ChannelID, Score, PictrueUrl, ProcUserName," \
-                    "ProcTime, ProcRecord, ProcedureData) VALUES (" + "NULL" + "," + str(
-            resList["DeviceID"]) + "," + "'" + str(resList["AlarmTime"]) + "'" + "," + str(resList["AlarmType"]) \
-                    + "," + str(resList["ChannelID"]) + "," + str(resList["Score"]) + "," + "'" + str(
-            resList["PictrueUrl"]) + "'" \
-                    + "," + "'" + str(procUserName) + "'" + "," + "'" + str(procTime) + "'" + "," + "'" + str(
-            procRecord) + "'" + "," + "'" + str(resList["ProcedureData"]) + "'" + ")"
-        deletesql = "DELETE FROM AlarmEvent where ID=" + str(id)
+        try:
+            selectsql = "SELECT OrgID, DeviceID, DeviceName, ChannelID, AlarmTime, AlarmType, Score, PictrueUrl, \
+            ProcedureData FROM AlarmEvent where ID=" + str(id)
+            resList = ms.ExecQuery(selectsql)[0]
+            insertsql = "INSERT INTO AlarmEventRecord (OrgID, DeviceID, AlarmTime, AlarmType, ChannelID, Score, PictrueUrl, ProcUserName," \
+                        "ProcTime, ProcRecord, ProcedureData) VALUES (" + "NULL" + "," + str(
+                resList["DeviceID"]) + "," + "'" + str(resList["AlarmTime"]) + "'" + "," + str(resList["AlarmType"]) \
+                        + "," + str(resList["ChannelID"]) + "," + str(resList["Score"]) + "," + "'" + str(
+                resList["PictrueUrl"]) + "'" \
+                        + "," + "'" + str(procUserName) + "'" + "," + "'" + str(procTime) + "'" + "," + "'" + str(
+                procRecord) + "'" + "," + "'" + str(resList["ProcedureData"]) + "'" + ")"
+            deletesql = "DELETE FROM AlarmEvent where ID=" + str(id)
 
-        ms.ExecMove(id, insertsql, deletesql)
-        logger.info("%s process a message and write: %s" % (procUserName, procRecord))
+            ms.ExecMove(id, insertsql, deletesql)
+            logger.info("%s process a message and write: %s" % (str(procUserName), str(procRecord)))
+
+        except Exception, e:
+            logger.error("There is no Message with id: " + str(id), exc_info=True)
 
 class NoticeProcessThread(Thread):
     def __init__(self):

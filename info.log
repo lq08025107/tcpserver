@@ -1,19 +1,117 @@
-2017-02-27 17:17:21,098 - Reactor - INFO - Reactor has started.
+2017-02-27 19:52:58,798 - GlobalParams - INFO - Start Initlizing Process Thread.
 
-2017-02-27 17:17:36,039 - HTTPServer - INFO - Received post request from host: 10.25.18.9.
+2017-02-27 19:52:58,799 - LogicCoreModule - INFO - Event Thread-1 Start Running
 
-2017-02-27 17:17:36,073 - Store - INFO - Message has been inserted into db successfully, id: 31
+2017-02-27 19:52:58,799 - LogicCoreModule - INFO - Event Thread-2 Start Running
 
-2017-02-27 17:19:17,069 - Reactor - INFO - Reactor has started.
+2017-02-27 19:52:58,799 - LogicCoreModule - INFO - Event Thread-3 Start Running
 
-2017-02-27 17:19:25,023 - HTTPServer - INFO - Received post request from host: 10.25.18.9.
+2017-02-27 19:52:58,801 - LogicCoreModule - INFO - Notice Thread-4 Start Running
 
-2017-02-27 17:19:25,049 - Store - ERROR - Error occured!!!
+2017-02-27 19:52:58,806 - GlobalParams - INFO - Finish Initlizing Process Thread.
+
+2017-02-27 19:52:58,806 - LogicCoreModule - INFO - Notice Thread-5 Start Running
+
+2017-02-27 19:52:58,811 - Reactor - INFO - Reactor has started.
+
+2017-02-27 19:53:03,765 - HTTPServer - INFO - Received post request from host: 10.25.18.9.
+
+2017-02-27 19:53:03,799 - Store - INFO - Message has been inserted into db successfully, id: 34
+
+2017-02-27 19:53:07,469 - HTTPServer - INFO - Received post request from host: 10.25.18.9.
+
+2017-02-27 19:53:07,492 - Store - INFO - Message has been inserted into db successfully, id: 35
+
+2017-02-27 19:53:10,019 - HTTPServer - INFO - Received post request from host: 10.25.18.9.
+
+2017-02-27 19:53:10,061 - Store - INFO - Message has been inserted into db successfully, id: 36
+
+2017-02-27 19:53:15,006 - HTTPServer - INFO - Received post request from host: 10.25.18.9.
+
+2017-02-27 19:53:15,012 - HTTPServer - INFO - Received post request from host: 10.25.18.9.
+
+2017-02-27 19:53:15,029 - HTTPServer - INFO - Received post request from host: 10.25.18.9.
+
+2017-02-27 19:53:15,029 - HTTPServer - INFO - Received post request from host: 10.25.18.9.
+
+2017-02-27 19:53:15,035 - Store - INFO - Message has been inserted into db successfully, id: 37
+
+2017-02-27 19:53:15,036 - HTTPServer - INFO - Received post request from host: 10.25.18.9.
+
+2017-02-27 19:53:15,039 - HTTPServer - INFO - Received post request from host: 10.25.18.9.
+
+2017-02-27 19:53:15,048 - HTTPServer - INFO - Received post request from host: 10.25.18.9.
+
+2017-02-27 19:53:15,049 - HTTPServer - INFO - Received post request from host: 10.25.18.9.
+
+2017-02-27 19:53:15,056 - HTTPServer - INFO - Received post request from host: 10.25.18.9.
+
+2017-02-27 19:53:15,059 - HTTPServer - INFO - Received post request from host: 10.25.18.9.
+
+2017-02-27 19:53:15,063 - HTTPServer - INFO - Received post request from host: 10.25.18.9.
+
+2017-02-27 19:53:15,065 - HTTPServer - INFO - Received post request from host: 10.25.18.9.
+
+2017-02-27 19:53:15,069 - HTTPServer - INFO - Received post request from host: 10.25.18.9.
+
+2017-02-27 19:53:15,072 - HTTPServer - INFO - Received post request from host: 10.25.18.9.
+
+2017-02-27 19:53:15,075 - HTTPServer - INFO - Received post request from host: 10.25.18.9.
+
+2017-02-27 19:53:15,078 - HTTPServer - INFO - Received post request from host: 10.25.18.9.
+
+2017-02-27 19:53:15,081 - Store - INFO - Message has been inserted into db successfully, id: 38
+
+2017-02-27 19:53:15,085 - HTTPServer - INFO - Received post request from host: 10.25.18.9.
+
+2017-02-27 19:53:15,086 - HTTPServer - INFO - Received post request from host: 10.25.18.9.
+
+2017-02-27 19:53:15,099 - HTTPServer - INFO - Received post request from host: 10.25.18.9.
+
+2017-02-27 19:53:15,105 - Store - INFO - Message has been inserted into db successfully, id: 39
+
+2017-02-27 19:53:15,105 - HTTPServer - INFO - Received post request from host: 10.25.18.9.
+
+2017-02-27 19:53:15,122 - Store - INFO - Message has been inserted into db successfully, id: 40
+
+2017-02-27 19:53:15,145 - Store - INFO - Message has been inserted into db successfully, id: 41
+
+2017-02-27 19:53:15,163 - Store - INFO - Message has been inserted into db successfully, id: 42
+
+2017-02-27 19:53:15,196 - Store - INFO - Message has been inserted into db successfully, id: 43
+
+2017-02-27 19:53:15,216 - Store - INFO - Message has been inserted into db successfully, id: 44
+
+2017-02-27 19:53:15,234 - Store - INFO - Message has been inserted into db successfully, id: 45
+
+2017-02-27 19:53:15,266 - Store - INFO - Message has been inserted into db successfully, id: 46
+
+2017-02-27 19:53:15,288 - Store - INFO - Message has been inserted into db successfully, id: 47
+
+2017-02-27 19:53:15,306 - Store - INFO - Message has been inserted into db successfully, id: 48
+
+2017-02-27 19:53:15,334 - Store - INFO - Message has been inserted into db successfully, id: 49
+
+2017-02-27 19:53:15,352 - Store - INFO - Message has been inserted into db successfully, id: 50
+
+2017-02-27 19:53:15,371 - Store - INFO - Message has been inserted into db successfully, id: 51
+
+2017-02-27 19:53:15,392 - Store - INFO - Message has been inserted into db successfully, id: 52
+
+2017-02-27 19:53:15,410 - Store - INFO - Message has been inserted into db successfully, id: 53
+
+2017-02-27 19:53:15,431 - Store - INFO - Message has been inserted into db successfully, id: 54
+
+2017-02-27 19:53:15,448 - Store - INFO - Message has been inserted into db successfully, id: 55
+
+2017-02-27 19:53:15,530 - Store - INFO - Message has been inserted into db successfully, id: 56
+
+2017-02-27 19:53:37,762 - TCPServer - INFO - Client 127.0.0.1:32768 connected.
+
+2017-02-27 19:53:42,009 - LogicCoreModule - ERROR - This is not a well formed xml.
 Traceback (most recent call last):
-  File "D:\pyworkspace\TcpServer\Store.py", line 20, in start_store
-    dataList = parser.parse(task)
-  File "D:\pyworkspace\TcpServer\MsgParserBox.py", line 13, in parse
-    dom = parseString(xmlcontent)
+  File "D:\pyworkspace\TcpServer\LogicCoreModule.py", line 50, in parseXml
+    xmlfile = minidom.parseString(data)
   File "C:\Python27\lib\xml\dom\minidom.py", line 1928, in parseString
     return expatbuilder.parseString(string)
   File "C:\Python27\lib\xml\dom\expatbuilder.py", line 940, in parseString
@@ -21,17 +119,119 @@ Traceback (most recent call last):
   File "C:\Python27\lib\xml\dom\expatbuilder.py", line 223, in parseString
     parser.Parse(string, True)
 ExpatError: syntax error: line 1, column 0
-2017-02-27 17:27:29,256 - Reactor - INFO - Reactor has started.
+2017-02-27 19:53:42,015 - LogicCoreModule - ERROR - Error Type Number!! Please Check Interface Book!!!
 
-2017-02-27 19:11:05,716 - GlobalParams - INFO - Start Initlizing Process Thread.
+2017-02-27 19:58:55,276 - GlobalParams - INFO - Start Initlizing Process Thread.
 
-2017-02-27 19:11:05,717 - LogicCoreModule - INFO - Event Thread-1 Start Running
+2017-02-27 19:58:55,276 - LogicCoreModule - INFO - Event Thread-1 Start Running
 
-2017-02-27 19:11:05,717 - LogicCoreModule - INFO - Event Thread-2 Start Running
+2017-02-27 19:58:55,278 - LogicCoreModule - INFO - Event Thread-2 Start Running
 
-2017-02-27 19:11:05,719 - LogicCoreModule - INFO - Event Thread-3 Start Running
+2017-02-27 19:58:55,279 - LogicCoreModule - INFO - Event Thread-3 Start Running
 
-2017-02-27 19:11:05,720 - GlobalParams - INFO - Finish Initlizing Process Thread.
+2017-02-27 19:58:55,279 - LogicCoreModule - INFO - Notice Thread-4 Start Running
 
-2017-02-27 19:11:05,721 - Reactor - INFO - Reactor has started.
+2017-02-27 19:58:55,279 - LogicCoreModule - INFO - Notice Thread-5 Start Running
+
+2017-02-27 19:58:55,279 - GlobalParams - INFO - Finish Initlizing Process Thread.
+
+2017-02-27 19:58:55,283 - Reactor - INFO - Reactor has started.
+
+2017-02-27 19:58:59,082 - TCPServer - INFO - Client 127.0.0.1:32784 connected.
+
+2017-02-27 20:04:04,648 - GlobalParams - INFO - Start Initlizing Process Thread.
+
+2017-02-27 20:04:04,648 - LogicCoreModule - INFO - Event Thread-1 Start Running
+
+2017-02-27 20:04:04,648 - LogicCoreModule - INFO - Event Thread-2 Start Running
+
+2017-02-27 20:04:04,650 - LogicCoreModule - INFO - Event Thread-3 Start Running
+
+2017-02-27 20:04:04,650 - LogicCoreModule - INFO - Notice Thread-4 Start Running
+
+2017-02-27 20:04:04,651 - LogicCoreModule - INFO - Notice Thread-5 Start Running
+
+2017-02-27 20:04:04,651 - GlobalParams - INFO - Finish Initlizing Process Thread.
+
+2017-02-27 20:04:04,654 - Reactor - INFO - Reactor has started.
+
+2017-02-27 20:04:07,770 - TCPServer - INFO - Client 127.0.0.1:32795 connected.
+
+2017-02-27 20:04:15,417 - LogicCoreModule - ERROR - There is no Message with id: 50
+Traceback (most recent call last):
+  File "D:\pyworkspace\TcpServer\LogicCoreModule.py", line 139, in event2record
+    resList = ms.ExecQuery(selectsql)[0]
+IndexError: list index out of range
+2017-02-27 20:06:59,941 - GlobalParams - INFO - Start Initlizing Process Thread.
+
+2017-02-27 20:06:59,941 - LogicCoreModule - INFO - Event Thread-1 Start Running
+
+2017-02-27 20:06:59,944 - LogicCoreModule - INFO - Event Thread-2 Start Running
+
+2017-02-27 20:06:59,944 - LogicCoreModule - INFO - Event Thread-3 Start Running
+
+2017-02-27 20:06:59,944 - LogicCoreModule - INFO - Notice Thread-4 Start Running
+
+2017-02-27 20:06:59,946 - LogicCoreModule - INFO - Notice Thread-5 Start Running
+
+2017-02-27 20:06:59,946 - GlobalParams - INFO - Finish Initlizing Process Thread.
+
+2017-02-27 20:06:59,950 - Reactor - INFO - Reactor has started.
+
+2017-02-27 20:07:31,447 - GlobalParams - INFO - Start Initlizing Process Thread.
+
+2017-02-27 20:07:31,448 - LogicCoreModule - INFO - Event Thread-1 Start Running
+
+2017-02-27 20:07:31,450 - LogicCoreModule - INFO - Event Thread-2 Start Running
+
+2017-02-27 20:07:31,450 - LogicCoreModule - INFO - Event Thread-3 Start Running
+
+2017-02-27 20:07:31,451 - LogicCoreModule - INFO - Notice Thread-4 Start Running
+
+2017-02-27 20:07:31,451 - LogicCoreModule - INFO - Notice Thread-5 Start Running
+
+2017-02-27 20:07:31,451 - GlobalParams - INFO - Finish Initlizing Process Thread.
+
+2017-02-27 20:07:31,456 - Reactor - INFO - Reactor has started.
+
+2017-02-27 20:07:46,148 - GlobalParams - INFO - Start Initlizing Process Thread.
+
+2017-02-27 20:07:46,150 - LogicCoreModule - INFO - Event Thread-1 Start Running
+
+2017-02-27 20:07:46,151 - LogicCoreModule - INFO - Event Thread-2 Start Running
+
+2017-02-27 20:07:46,151 - LogicCoreModule - INFO - Event Thread-3 Start Running
+
+2017-02-27 20:07:46,153 - LogicCoreModule - INFO - Notice Thread-4 Start Running
+
+2017-02-27 20:07:46,154 - GlobalParams - INFO - Finish Initlizing Process Thread.
+
+2017-02-27 20:07:46,154 - LogicCoreModule - INFO - Notice Thread-5 Start Running
+
+2017-02-27 20:07:46,157 - Reactor - INFO - Reactor has started.
+
+2017-02-27 20:08:10,299 - GlobalParams - INFO - Start Initlizing Process Thread.
+
+2017-02-27 20:08:10,299 - LogicCoreModule - INFO - Event Thread-1 Start Running
+
+2017-02-27 20:08:10,301 - LogicCoreModule - INFO - Event Thread-2 Start Running
+
+2017-02-27 20:08:10,301 - LogicCoreModule - INFO - Event Thread-3 Start Running
+
+2017-02-27 20:08:10,302 - LogicCoreModule - INFO - Notice Thread-4 Start Running
+
+2017-02-27 20:08:10,303 - LogicCoreModule - INFO - Notice Thread-5 Start Running
+
+2017-02-27 20:08:10,303 - GlobalParams - INFO - Finish Initlizing Process Thread.
+
+2017-02-27 20:08:10,308 - Reactor - INFO - Reactor has started.
+
+2017-02-27 20:08:14,904 - TCPServer - INFO - Client 127.0.0.1:32948 connected.
+
+2017-02-27 20:08:24,717 - LogicCoreModule - ERROR - There is no Message with id: 49
+Traceback (most recent call last):
+  File "D:\pyworkspace\TcpServer\LogicCoreModule.py", line 143, in event2record
+    resList = ms.ExecQuery(selectsql)[0]
+IndexError: list index out of range
+2017-02-27 20:08:34,519 - LogicCoreModule - INFO - someone dangerous process a message and write: 刘强测试用111111111111
 

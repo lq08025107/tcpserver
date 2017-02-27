@@ -21,7 +21,6 @@ class ICBCHTTP(Resource):
         newdata = request.content.read()
         queue.put(newdata)
         logger.info("Received post request from host: " + str(request.client.host) + ".")
-        print queue.qsize()
         return ''
 
 def start_http():

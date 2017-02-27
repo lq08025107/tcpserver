@@ -68,7 +68,7 @@ def AddOneClient(Client, ClientIP):
         GlobalParams.ClientOnlineList[ClientIP] = Client
 
         GlobalParams.ClientOnlineLock = False
-    print ClientIP
+
 
 def DelOneClient(ClientIP):
     GlobalParams.ClientOnlineLock = True

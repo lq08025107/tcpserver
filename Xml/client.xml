@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Operator id="100">
+<Type>100</Type>
+<Params>
+<Param id="1">48</Param>
+<Param id="2">someone dangerous</Param>
+<Param id="3">2017-2-24 17:22:12</Param>
+<Param id="4">刘强测试用111111111111</Param>
+</Params>
+</Operator>

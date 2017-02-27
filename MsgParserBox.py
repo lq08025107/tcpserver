@@ -36,7 +36,6 @@ class MsgParser(object):
     def constr(self, nodeList):
         query = "INSERT INTO AlarmEvent(DeviceID, ChannelID, AlarmTime, AlarmType, Score, PictrueUrl, ProcedureData) VALUES ("\
                     + nodeList[3] +","+ nodeList[4]+"," + "'" + nodeList[1] + "'"+ "," + nodeList[0]+"," + nodeList[2]+"," +"'"+ nodeList[6]+"'"+"," + "'" +nodeList[5]+"'" +")"
-        print query
         return query
 def main():
     msgparser = MsgParser()

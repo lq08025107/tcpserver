@@ -80,4 +80,5 @@ def main():
 
 
 if __name__ =='__main__':
-    event2record(19, 'liuqiang',  '2017-02-24 14:37:15.000','处理完毕')
+    pass
+    #event2record(19, 'liuqiang',  '2017-02-24 14:37:15.000','处理完毕')
