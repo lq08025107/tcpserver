@@ -1,13 +1,15 @@
 from MyQueue import queue
 import datetime
 from MsgParserBox import MsgParser
-from DBOperator import MSSQL
+from utiltool.DBOperator import MSSQL
+import GlobalParams
 
-ms = MSSQL(host="10.25.18.9",user="sa",pwd="p@ssw0rd",db="IVAS")
 
 
 def store():
+    
     while(True):
+        ms = MSSQL()
         if queue.qsize() != 0:
             task=queue.get(block=True, timeout=2)
             parser = MsgParser()
@@ -15,8 +17,14 @@ def store():
                 dataList = parser.parse(task)
                 #save as db
                 insertsql = parser.constr(dataList)
-                ms.ExecNonQuery(insertsql)
+                id = ms.executeAndGetId(insertsql)
+                print id            
                 print "insert into db successfully"
+                
+                #send to application module
+                notice_queue= GlobalParams.getNoticeProcessThread()
+                notice_queue.put(id)
+                print "notice queue now has %d message" % notice_queue.qsize()
 
             except Exception, e:
                 print "------------------------------------"

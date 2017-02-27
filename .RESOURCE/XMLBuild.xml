@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WarningsData>
+	<WarningData>
+		<DynamicInfo>
+			<TypeName>00</TypeName>
+			<AlarmTime>12:00:00</AlarmTime>
+			<LevelName>Hello</LevelName>
+			<PictrueUrl>www.picture1.com</PictrueUrl>
+		</DynamicInfo>
+		<StaticInfo>
+			<Orgnization>ICBC1</Orgnization>
+			<Address>China_Beijing_Haidian_xueyuanlu40</Address>
+			<DeviceName>ATM1</DeviceName>
+		</StaticInfo>
+		<ProcessInfo>
+			<Status>done</Status>
+			<Time>12:00:01</Time>
+			<User>admin1</User>
+			<Record>done</Record>
+		</ProcessInfo>
+	</WarningData>
+</WarningsData>

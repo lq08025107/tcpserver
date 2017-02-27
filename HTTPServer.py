@@ -6,6 +6,7 @@ from twisted.web.server import Site
 from twisted.internet import reactor, endpoints
 from twisted.web import server
 from MyQueue import queue
+from TCPServerModule import ICBCFactory
 
 class ICBCHTTP(Resource):
     def render_Get(self, request):
@@ -15,15 +16,20 @@ class ICBCHTTP(Resource):
         #pprint(request.__dict__)
         #newdata = request.content.getvalue()
         newdata = request.content.read()
-        print newdata
         queue.put(newdata)
         return ''
 
-def http():
+def http_tcp():
+    #http in reactor
     root = Resource()
     root.putChild("data", ICBCHTTP())
     endpoints.serverFromString(reactor, "tcp:8000").listen(server.Site(root))
+    #tcp in reactor
+    ICBCEndpoint = endpoints.serverFromString(reactor, "tcp:8800")
+    ICBCEndpoint.listen(ICBCFactory())
+    #start the reactor
     reactor.run()
-
+    
+    
 if __name__ == '__main__':
-    http()
+    http_tcp()

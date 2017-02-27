@@ -1,0 +1,23 @@
+<InterfaceDemo>
+	<Operator id="123456">
+		<Type>1</Type>
+		<Params>
+			<Param id="1">1000</>
+			<Param id="2">1001</>
+			<Param id="3">1002</>
+			<Param id="4">1003</>
+		</Params>
+	</Operator>
+
+	<Operator id="123456">
+		<Type>1</Type>
+		<RetCode>0</RetCode>
+		<RetInfos>
+			<RetInfo id="1">1000</RetInfo>
+			<RetInfo id="1">1000</RetInfo>
+			<RetInfo id="1">1000</RetInfo>
+			<RetInfo id="1">1000</RetInfo>
+		</RetInfos>
+	</Operator>
+</InterfaceDemo>
+

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WarningsData>
+    <WarningData>
+        <DynamicInfo>null</DynamicInfo>
+        <name>python check</name>
+        <AlarmTime>12:00:00</AlarmTime>
+    </WarningData>
+    <WarningData>
+        <DynamicInfo>null</DynamicInfo>
+        <name>python learn</name>
+        <AlarmTime>12:00:00</AlarmTime>
+    </WarningData>
+</WarningsData>
