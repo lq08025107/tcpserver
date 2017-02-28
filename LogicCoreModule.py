@@ -35,7 +35,8 @@ class EventProcessThread(Thread):
             while self.ProcessQueue.not_empty:
                 message = self.ProcessQueue.get()
                 clientID = message[0]
-                operateData = message[1].decode('GBK').encode('UTF-8')
+                #operateData = message[1].decode('GBK').encode('UTF-8')
+                operateData = message[1]
                 OperaterID, Type, params = self.parseXml(operateData)
                 RetCode, RetInfo = self.process(Type, params)
                 RetMessage = self.buildXml(OperaterID, Type, RetCode, RetInfo)
@@ -93,7 +94,7 @@ class EventProcessThread(Thread):
             root.appendChild(msg)
 
         f = open('./Xml/des.xml', 'w')
-        dom.writexml(f, addindent='  ', newl='\n')
+        dom.writexml(f)
         f.close()
         retXml = "Result Message"
 
@@ -115,7 +116,7 @@ class EventProcessThread(Thread):
             time = params['3'].encode("utf-8")
             operation = params['4'].encode("utf-8")
             self.event2record(id, user, time, operation)
-            RetCode = 0
+            RetCode = id
             # RetInfo = [(1, "11111"), (2, "22222")]
         elif type == 102:
             # 执行操作1=============
@@ -174,6 +175,7 @@ class NoticeProcessThread(Thread):
                 allClient = GlobalParams.GetAllClient()
                 for client in allClient.values():
                     client.dataSend(xmlstring)
+                    logger.info("Send the message to client Already.")
 
         logger.info("Notice " + self.getName() + " Stop Run")
 
@@ -189,14 +191,14 @@ class NoticeProcessThread(Thread):
         root.appendChild(msg)
 
         f = open('./Xml/4client.xml', 'w')
-        dom.writexml(f, addindent='  ', newl='\n')
+        #dom.writexml(f, addindent='  ', newl='\n')
+        dom.writexml(f)
         f.close()
-        retXml = "Result Message"
 
-        oldXmlFile = open('./Xml/des.xml')
+        oldXmlFile = open('./Xml/4client.xml')
         oldXml = oldXmlFile.read()
         oldXmlFile.close()
-
+        retXml = "Result Message"
         return oldXml
 
 if __name__ == '__main__':
