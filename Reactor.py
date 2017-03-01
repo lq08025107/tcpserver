@@ -2,7 +2,8 @@ from twisted.web.resource import Resource
 from twisted.internet import reactor, endpoints
 from twisted.web import server
 from HTTPServer import ICBCHTTP
-from TCPServer import ICBCFactory
+#from TCPServer import ICBCFactory
+from TCPServerPack import ICBCFactory
 from LogModule import setup_logging
 import logging
 

@@ -93,16 +93,9 @@ class EventProcessThread(Thread):
 
             root.appendChild(msg)
 
-        f = open('./Xml/des.xml', 'w')
-        dom.writexml(f)
-        f.close()
-        retXml = "Result Message"
+        xmlstring = dom.toxml()
 
-        oldXmlFile = open('./Xml/des.xml')
-        oldXml = oldXmlFile.read()
-        oldXmlFile.close()
-
-        return oldXml
+        return xmlstring
 
     def process(self, type, params):
         RetCode = -1
@@ -190,22 +183,17 @@ class NoticeProcessThread(Thread):
         msg.appendChild(data)
         root.appendChild(msg)
 
-        f = open('./Xml/4client.xml', 'w')
-        #dom.writexml(f, addindent='  ', newl='\n')
-        dom.writexml(f)
-        f.close()
-
-        oldXmlFile = open('./Xml/4client.xml')
-        oldXml = oldXmlFile.read()
-        oldXmlFile.close()
-        retXml = "Result Message"
-        return oldXml
+        xmlstring = dom.toxml();
+        return xmlstring
 
 if __name__ == '__main__':
 
-
+    ept = EventProcessThread()
+    xmls = ept.buildXml('1', '101', 300, '')
+    print xmls
     npt = NoticeProcessThread()
-    npt.buildxml4client(8)
+    xml = npt.buildxml4client(8)
+    print xml
     
 
 

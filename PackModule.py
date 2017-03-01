@@ -7,5 +7,4 @@ def packData(body):
     header = [ver, bodySize, cmd]
     headPack = struct.pack('!3I', *header)
     sendData = headPack + body.encode()
-    print sendData
     return sendData

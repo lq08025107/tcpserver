@@ -1,6 +1,6 @@
-2017-02-27 19:53:42,009 - LogicCoreModule - ERROR - This is not a well formed xml.
+2017-03-01 10:54:56,170 - LogicCoreModule - ERROR - This is not a well formed xml.
 Traceback (most recent call last):
-  File "D:\pyworkspace\TcpServer\LogicCoreModule.py", line 50, in parseXml
+  File "D:/pyworkspace/TcpServer\LogicCoreModule.py", line 55, in parseXml
     xmlfile = minidom.parseString(data)
   File "C:\Python27\lib\xml\dom\minidom.py", line 1928, in parseString
     return expatbuilder.parseString(string)
@@ -8,31 +8,6 @@ Traceback (most recent call last):
     return builder.parseString(string)
   File "C:\Python27\lib\xml\dom\expatbuilder.py", line 223, in parseString
     parser.Parse(string, True)
-ExpatError: syntax error: line 1, column 0
-2017-02-27 19:53:42,015 - LogicCoreModule - ERROR - Error Type Number!! Please Check Interface Book!!!
+ExpatError: not well-formed (invalid token): line 1, column 0
+2017-03-01 10:54:56,176 - LogicCoreModule - ERROR - Error Type Number!! Please Check Interface Book!!!
 
-2017-02-27 20:04:15,417 - LogicCoreModule - ERROR - There is no Message with id: 50
-Traceback (most recent call last):
-  File "D:\pyworkspace\TcpServer\LogicCoreModule.py", line 139, in event2record
-    resList = ms.ExecQuery(selectsql)[0]
-IndexError: list index out of range
-2017-02-27 20:08:24,717 - LogicCoreModule - ERROR - There is no Message with id: 49
-Traceback (most recent call last):
-  File "D:\pyworkspace\TcpServer\LogicCoreModule.py", line 143, in event2record
-    resList = ms.ExecQuery(selectsql)[0]
-IndexError: list index out of range
-2017-02-28 19:20:37,164 - LogicCoreModule - ERROR - This is not a well formed xml.
-Traceback (most recent call last):
-  File "D:\pyworkspace\TcpServer\LogicCoreModule.py", line 60, in parseXml
-    param_value = param.firstChild.data
-AttributeError: 'NoneType' object has no attribute 'data'
-2017-02-28 19:23:47,819 - LogicCoreModule - ERROR - This is not a well formed xml.
-Traceback (most recent call last):
-  File "D:/pyworkspace/TcpServer\LogicCoreModule.py", line 60, in parseXml
-    param_value = param.firstChild.data
-AttributeError: 'NoneType' object has no attribute 'data'
-2017-02-28 19:32:23,880 - LogicCoreModule - ERROR - There is no Message with id: 13
-Traceback (most recent call last):
-  File "D:\pyworkspace\TcpServer\LogicCoreModule.py", line 144, in event2record
-    resList = ms.ExecQuery(selectsql)[0]
-IndexError: list index out of range
