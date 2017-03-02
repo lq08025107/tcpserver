@@ -189,3 +189,283 @@ ExpatError: not well-formed (invalid token): line 1, column 0
 
 2017-03-01 11:21:53,256 - TCPServerPack - INFO - Client 10.25.1.38:4185 disconnected.
 
+2017-03-01 16:45:31,502 - GlobalParams - INFO - Start Initlizing Process Thread.
+
+2017-03-01 16:45:31,503 - LogicCoreModule - INFO - Event Thread-1 Start Running
+
+2017-03-01 16:45:31,503 - LogicCoreModule - INFO - Event Thread-2 Start Running
+
+2017-03-01 16:45:31,503 - LogicCoreModule - INFO - Event Thread-3 Start Running
+
+2017-03-01 16:45:31,505 - LogicCoreModule - INFO - Notice Thread-4 Start Running
+
+2017-03-01 16:45:31,506 - GlobalParams - INFO - Finish Initlizing Process Thread.
+
+2017-03-01 16:45:31,506 - LogicCoreModule - INFO - Notice Thread-5 Start Running
+
+2017-03-01 16:45:31,512 - Reactor - INFO - Reactor has started.
+
+2017-03-01 17:12:32,802 - GlobalParams - INFO - Start Initlizing Process Thread.
+
+2017-03-01 17:12:32,803 - LogicCoreModule - INFO - Event Thread-3 Start Running
+
+2017-03-01 17:12:32,803 - LogicCoreModule - INFO - Notice Thread-5 Start Running
+
+2017-03-01 17:12:32,805 - GlobalParams - INFO - Finish Initlizing Process Thread.
+
+2017-03-01 17:12:32,809 - Reactor - INFO - Reactor has started.
+
+2017-03-02 08:42:21,510 - GlobalParams - INFO - Start Initlizing Process Thread.
+
+2017-03-02 08:42:21,510 - LogicCoreModule - INFO - Event Thread-1 Start Running
+
+2017-03-02 08:42:21,512 - LogicCoreModule - INFO - Event Thread-2 Start Running
+
+2017-03-02 08:42:21,513 - LogicCoreModule - INFO - Event Thread-3 Start Running
+
+2017-03-02 08:42:21,513 - LogicCoreModule - INFO - Notice Thread-4 Start Running
+
+2017-03-02 08:42:21,513 - GlobalParams - INFO - Finish Initlizing Process Thread.
+
+2017-03-02 08:42:21,517 - Reactor - INFO - Reactor has started.
+
+2017-03-02 08:45:49,493 - HTTPServer - INFO - Received post request from host: 10.25.18.9.
+
+2017-03-02 08:45:52,911 - Store - ERROR - Error occured!!!
+Traceback (most recent call last):
+  File "D:\pyworkspace\TcpServer\Store.py", line 23, in start_store
+    id = ms.executeAndGetId(insertsql)
+  File "D:\pyworkspace\TcpServer\utiltool\DBOperator.py", line 41, in executeAndGetId
+    self._cursor.execute(sql)
+  File "C:\Python27\lib\site-packages\DBUtils\SteadyDB.py", line 580, in tough_method
+    result = method(*args, **kwargs)  # try to execute
+  File "pymssql.pyx", line 466, in pymssql.Cursor.execute (pymssql.c:7533)
+IntegrityError: (547, 'The INSERT statement conflicted with the FOREIGN KEY constraint "AlarmEvent_DeviceID". The conflict occurred in database "IVAS", table "dbo.EquipmentHost", column \'ID\'.DB-Lib error message 20018, severity 16:\nGeneral SQL Server error: Check messages from the SQL Server\n')
+2017-03-02 09:07:10,661 - GlobalParams - INFO - Start Initlizing Process Thread.
+
+2017-03-02 09:07:10,661 - LogicCoreModule - INFO - Event Thread-1 Start Running
+
+2017-03-02 09:07:10,663 - LogicCoreModule - INFO - Event Thread-2 Start Running
+
+2017-03-02 09:07:10,664 - LogicCoreModule - INFO - Event Thread-3 Start Running
+
+2017-03-02 09:07:10,664 - LogicCoreModule - INFO - Notice Thread-4 Start Running
+
+2017-03-02 09:07:10,664 - Store - INFO - Store Thread-5 Start Running
+
+2017-03-02 09:07:10,664 - GlobalParams - INFO - Finish Initlizing Process Thread.
+
+2017-03-02 09:07:10,668 - Reactor - INFO - Reactor has started.
+
+2017-03-02 09:18:37,647 - GlobalParams - INFO - Start Initlizing Process Thread.
+
+2017-03-02 09:18:37,647 - LogicCoreModule - INFO - Event Thread-1 Start Running
+
+2017-03-02 09:18:37,648 - LogicCoreModule - INFO - Event Thread-2 Start Running
+
+2017-03-02 09:18:37,648 - LogicCoreModule - INFO - Event Thread-3 Start Running
+
+2017-03-02 09:18:37,648 - LogicCoreModule - INFO - Notice Thread-4 Start Running
+
+2017-03-02 09:18:37,648 - Store - INFO - Store Thread-5 Start Running
+
+2017-03-02 09:18:37,650 - Reactor - INFO - Twisted Thread-6 Start Running
+
+2017-03-02 09:18:37,650 - GlobalParams - INFO - Finish Initlizing Process Thread.
+
+2017-03-02 09:18:37,664 - Reactor - INFO - HTTP Server listen on port: 8000
+
+2017-03-02 09:18:37,665 - Reactor - INFO - TCP Server listen on port: 8800
+
+2017-03-02 09:18:37,665 - Reactor - INFO - Reactor has started.
+
+2017-03-02 09:18:58,487 - GlobalParams - INFO - Start Initlizing Process Thread.
+
+2017-03-02 09:18:58,489 - LogicCoreModule - INFO - Event Thread-1 Start Running
+
+2017-03-02 09:18:58,489 - LogicCoreModule - INFO - Event Thread-2 Start Running
+
+2017-03-02 09:18:58,490 - LogicCoreModule - INFO - Event Thread-3 Start Running
+
+2017-03-02 09:18:58,490 - LogicCoreModule - INFO - Notice Thread-4 Start Running
+
+2017-03-02 09:18:58,490 - Store - INFO - Store Thread-5 Start Running
+
+2017-03-02 09:18:58,490 - Reactor - INFO - Twisted Thread-6 Start Running
+
+2017-03-02 09:18:58,492 - GlobalParams - INFO - Finish Initlizing Process Thread.
+
+2017-03-02 09:18:58,493 - Reactor - INFO - HTTP Server listen on port: 8000
+
+2017-03-02 09:18:58,494 - Reactor - INFO - TCP Server listen on port: 8800
+
+2017-03-02 09:18:58,494 - Reactor - INFO - Reactor has started.
+
+2017-03-02 09:27:18,548 - GlobalParams - INFO - Start Initlizing Process Thread.
+
+2017-03-02 09:27:18,548 - Reactor - INFO - Twisted Thread-1 Start Running
+
+2017-03-02 09:27:18,549 - FTPServer - INFO - FTP Thread-2 Start Running
+
+2017-03-02 09:27:18,549 - LogicCoreModule - INFO - Event Thread-3 Start Running
+
+2017-03-02 09:27:18,551 - LogicCoreModule - INFO - Event Thread-4 Start Running
+
+2017-03-02 09:27:18,552 - Reactor - INFO - HTTP Server listen on port: 8000
+
+2017-03-02 09:27:18,552 - LogicCoreModule - INFO - Event Thread-5 Start Running
+
+2017-03-02 09:27:18,553 - LogicCoreModule - INFO - Notice Thread-6 Start Running
+
+2017-03-02 09:27:18,555 - Store - INFO - Store Thread-7 Start Running
+
+2017-03-02 09:27:18,555 - GlobalParams - INFO - Finish Initlizing Process Thread.
+
+2017-03-02 09:27:18,558 - Reactor - INFO - TCP Server listen on port: 8800
+
+2017-03-02 09:27:18,558 - Reactor - INFO - Reactor has started.
+
+2017-03-02 09:28:56,901 - GlobalParams - INFO - Start Initlizing Process Thread.
+
+2017-03-02 09:28:56,901 - Reactor - INFO - Twisted Thread-1 Start Running
+
+2017-03-02 09:28:56,901 - FTPServer - INFO - FTP Thread-2 Start Running
+
+2017-03-02 09:28:56,903 - LogicCoreModule - INFO - Event Thread-3 Start Running
+
+2017-03-02 09:28:56,904 - Reactor - INFO - HTTP Server listen on port: 8000
+
+2017-03-02 09:28:56,905 - pyftpdlib - INFO - >>> starting FTP server on 10.25.18.40:21, pid=964 <<<
+
+2017-03-02 09:28:56,907 - LogicCoreModule - INFO - Event Thread-4 Start Running
+
+2017-03-02 09:28:56,907 - LogicCoreModule - INFO - Event Thread-5 Start Running
+
+2017-03-02 09:28:56,908 - pyftpdlib - INFO - concurrency model: async
+
+2017-03-02 09:28:56,910 - LogicCoreModule - INFO - Notice Thread-6 Start Running
+
+2017-03-02 09:28:56,911 - pyftpdlib - INFO - masquerade (NAT) address: None
+
+2017-03-02 09:28:56,911 - Reactor - INFO - TCP Server listen on port: 8800
+
+2017-03-02 09:28:56,911 - pyftpdlib - INFO - passive ports: None
+
+2017-03-02 09:28:56,917 - GlobalParams - INFO - Finish Initlizing Process Thread.
+
+2017-03-02 09:28:56,917 - Store - INFO - Store Thread-7 Start Running
+
+2017-03-02 09:28:56,917 - Reactor - INFO - Reactor has started.
+
+2017-03-02 09:30:14,098 - pyftpdlib - INFO - 10.25.18.9:49782-[] FTP session opened (connect)
+
+2017-03-02 09:30:14,127 - pyftpdlib - INFO - 10.25.18.9:49782-[anonymous] USER 'anonymous' logged in.
+
+2017-03-02 09:31:40,595 - GlobalParams - INFO - Start Initlizing Process Thread.
+
+2017-03-02 09:31:40,596 - Reactor - INFO - Twisted Thread-1 Start Running
+
+2017-03-02 09:31:40,596 - FTPServer - INFO - FTP Thread-2 Start Running
+
+2017-03-02 09:31:40,598 - LogicCoreModule - INFO - Event Thread-3 Start Running
+
+2017-03-02 09:31:40,599 - LogicCoreModule - INFO - Event Thread-4 Start Running
+
+2017-03-02 09:31:40,601 - Reactor - INFO - HTTP Server listen on port: 8000
+
+2017-03-02 09:31:40,601 - LogicCoreModule - INFO - Event Thread-5 Start Running
+
+2017-03-02 09:31:40,601 - pyftpdlib - INFO - >>> starting FTP server on 10.25.18.40:21, pid=6904 <<<
+
+2017-03-02 09:31:40,601 - LogicCoreModule - INFO - Notice Thread-6 Start Running
+
+2017-03-02 09:31:40,602 - Store - INFO - Store Thread-7 Start Running
+
+2017-03-02 09:31:40,604 - pyftpdlib - INFO - concurrency model: async
+
+2017-03-02 09:31:40,602 - GlobalParams - INFO - Finish Initlizing Process Thread.
+
+2017-03-02 09:31:40,605 - Reactor - INFO - TCP Server listen on port: 8800
+
+2017-03-02 09:31:40,605 - pyftpdlib - INFO - masquerade (NAT) address: None
+
+2017-03-02 09:31:40,607 - Reactor - INFO - Reactor has started.
+
+2017-03-02 09:31:40,607 - pyftpdlib - INFO - passive ports: None
+
+2017-03-02 09:34:28,131 - GlobalParams - INFO - Start Initlizing Process Thread.
+
+2017-03-02 09:34:28,131 - Reactor - INFO - Twisted Thread-1 Start Running
+
+2017-03-02 09:34:28,131 - LogicCoreModule - INFO - Event Thread-3 Start Running
+
+2017-03-02 09:34:28,132 - LogicCoreModule - INFO - Event Thread-4 Start Running
+
+2017-03-02 09:34:28,134 - Reactor - INFO - HTTP Server listen on port: 8000
+
+2017-03-02 09:34:28,134 - LogicCoreModule - INFO - Event Thread-5 Start Running
+
+2017-03-02 09:34:28,134 - LogicCoreModule - INFO - Notice Thread-6 Start Running
+
+2017-03-02 09:34:28,135 - Store - INFO - Store Thread-7 Start Running
+
+2017-03-02 09:34:28,135 - GlobalParams - INFO - Finish Initlizing Process Thread.
+
+2017-03-02 09:34:28,138 - Reactor - INFO - TCP Server listen on port: 8800
+
+2017-03-02 09:34:28,138 - Reactor - INFO - Reactor has started.
+
+2017-03-02 09:35:00,533 - GlobalParams - INFO - Start Initlizing Process Thread.
+
+2017-03-02 09:35:00,535 - Reactor - INFO - Twisted Thread-1 Start Running
+
+2017-03-02 09:35:00,536 - LogicCoreModule - INFO - Event Thread-2 Start Running
+
+2017-03-02 09:35:00,536 - LogicCoreModule - INFO - Event Thread-3 Start Running
+
+2017-03-02 09:35:00,538 - LogicCoreModule - INFO - Event Thread-4 Start Running
+
+2017-03-02 09:35:00,538 - Reactor - INFO - HTTP Server listen on port: 8000
+
+2017-03-02 09:35:00,539 - LogicCoreModule - INFO - Notice Thread-5 Start Running
+
+2017-03-02 09:35:00,539 - Store - INFO - Store Thread-6 Start Running
+
+2017-03-02 09:35:00,539 - GlobalParams - INFO - Finish Initlizing Process Thread.
+
+2017-03-02 09:35:00,540 - Reactor - INFO - TCP Server listen on port: 8800
+
+2017-03-02 09:35:00,542 - Reactor - INFO - Reactor has started.
+
+2017-03-02 09:35:33,154 - HTTPServer - INFO - Received post request from host: 10.25.18.9.
+
+2017-03-02 09:35:33,247 - Store - ERROR - Error occured!!!
+Traceback (most recent call last):
+  File "D:\pyworkspace\TcpServer\Store.py", line 33, in run
+    id = ms.executeAndGetId(insertsql)
+  File "D:\pyworkspace\TcpServer\utiltool\DBOperator.py", line 41, in executeAndGetId
+    self._cursor.execute(sql)
+  File "C:\Python27\lib\site-packages\DBUtils\SteadyDB.py", line 580, in tough_method
+    result = method(*args, **kwargs)  # try to execute
+  File "pymssql.pyx", line 466, in pymssql.Cursor.execute (pymssql.c:7533)
+IntegrityError: (547, 'The INSERT statement conflicted with the FOREIGN KEY constraint "AlarmEvent_DeviceID". The conflict occurred in database "IVAS", table "dbo.EquipmentHost", column \'ID\'.DB-Lib error message 20018, severity 16:\nGeneral SQL Server error: Check messages from the SQL Server\n')
+2017-03-02 09:54:52,171 - HTTPServer - INFO - Received post request from host: 10.25.18.9.
+
+2017-03-02 09:54:52,178 - Store - ERROR - Error occured!!!
+Traceback (most recent call last):
+  File "D:\pyworkspace\TcpServer\Store.py", line 33, in run
+    id = ms.executeAndGetId(insertsql)
+  File "D:\pyworkspace\TcpServer\utiltool\DBOperator.py", line 41, in executeAndGetId
+    self._cursor.execute(sql)
+  File "C:\Python27\lib\site-packages\DBUtils\SteadyDB.py", line 580, in tough_method
+    result = method(*args, **kwargs)  # try to execute
+  File "pymssql.pyx", line 466, in pymssql.Cursor.execute (pymssql.c:7533)
+IntegrityError: (547, 'The INSERT statement conflicted with the FOREIGN KEY constraint "AlarmEvent_DeviceID". The conflict occurred in database "IVAS", table "dbo.EquipmentHost", column \'ID\'.DB-Lib error message 20018, severity 16:\nGeneral SQL Server error: Check messages from the SQL Server\n')
+2017-03-02 09:59:23,552 - HTTPServer - INFO - Received post request from host: 10.25.18.9.
+
+2017-03-02 09:59:23,582 - Store - INFO - Message has been inserted into db successfully, id: 200
+
+2017-03-02 10:01:53,772 - HTTPServer - INFO - Received post request from host: 10.25.18.9.
+
+2017-03-02 10:01:53,795 - Store - INFO - Message has been inserted into db successfully, id: 201
+

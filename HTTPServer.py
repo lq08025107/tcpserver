@@ -1,7 +1,7 @@
 from twisted.web.resource import Resource
 from twisted.internet import reactor, endpoints
 from twisted.web import server
-from MyQueue import queue
+import GlobalParams
 from LogModule import setup_logging
 import logging
 
@@ -16,7 +16,7 @@ class ICBCHTTP(Resource):
         return ''
 
     def render_POST(self, request):
-
+        queue = GlobalParams.getStoreProcessQueue()
         #newdata = request.content.getvalue()
         newdata = request.content.read()
         queue.put(newdata)

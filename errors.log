@@ -11,3 +11,33 @@ Traceback (most recent call last):
 ExpatError: not well-formed (invalid token): line 1, column 0
 2017-03-01 10:54:56,176 - LogicCoreModule - ERROR - Error Type Number!! Please Check Interface Book!!!
 
+2017-03-02 08:45:52,911 - Store - ERROR - Error occured!!!
+Traceback (most recent call last):
+  File "D:\pyworkspace\TcpServer\Store.py", line 23, in start_store
+    id = ms.executeAndGetId(insertsql)
+  File "D:\pyworkspace\TcpServer\utiltool\DBOperator.py", line 41, in executeAndGetId
+    self._cursor.execute(sql)
+  File "C:\Python27\lib\site-packages\DBUtils\SteadyDB.py", line 580, in tough_method
+    result = method(*args, **kwargs)  # try to execute
+  File "pymssql.pyx", line 466, in pymssql.Cursor.execute (pymssql.c:7533)
+IntegrityError: (547, 'The INSERT statement conflicted with the FOREIGN KEY constraint "AlarmEvent_DeviceID". The conflict occurred in database "IVAS", table "dbo.EquipmentHost", column \'ID\'.DB-Lib error message 20018, severity 16:\nGeneral SQL Server error: Check messages from the SQL Server\n')
+2017-03-02 09:35:33,247 - Store - ERROR - Error occured!!!
+Traceback (most recent call last):
+  File "D:\pyworkspace\TcpServer\Store.py", line 33, in run
+    id = ms.executeAndGetId(insertsql)
+  File "D:\pyworkspace\TcpServer\utiltool\DBOperator.py", line 41, in executeAndGetId
+    self._cursor.execute(sql)
+  File "C:\Python27\lib\site-packages\DBUtils\SteadyDB.py", line 580, in tough_method
+    result = method(*args, **kwargs)  # try to execute
+  File "pymssql.pyx", line 466, in pymssql.Cursor.execute (pymssql.c:7533)
+IntegrityError: (547, 'The INSERT statement conflicted with the FOREIGN KEY constraint "AlarmEvent_DeviceID". The conflict occurred in database "IVAS", table "dbo.EquipmentHost", column \'ID\'.DB-Lib error message 20018, severity 16:\nGeneral SQL Server error: Check messages from the SQL Server\n')
+2017-03-02 09:54:52,178 - Store - ERROR - Error occured!!!
+Traceback (most recent call last):
+  File "D:\pyworkspace\TcpServer\Store.py", line 33, in run
+    id = ms.executeAndGetId(insertsql)
+  File "D:\pyworkspace\TcpServer\utiltool\DBOperator.py", line 41, in executeAndGetId
+    self._cursor.execute(sql)
+  File "C:\Python27\lib\site-packages\DBUtils\SteadyDB.py", line 580, in tough_method
+    result = method(*args, **kwargs)  # try to execute
+  File "pymssql.pyx", line 466, in pymssql.Cursor.execute (pymssql.c:7533)
+IntegrityError: (547, 'The INSERT statement conflicted with the FOREIGN KEY constraint "AlarmEvent_DeviceID". The conflict occurred in database "IVAS", table "dbo.EquipmentHost", column \'ID\'.DB-Lib error message 20018, severity 16:\nGeneral SQL Server error: Check messages from the SQL Server\n')

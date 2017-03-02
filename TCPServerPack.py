@@ -43,7 +43,7 @@ class ICBCProtocol(protocol.Protocol):
             body = self._data_buffer[headerSize:headerSize + bodySize]
 
 
-            queue = GlobalParams.getEventProcessThread()
+            queue = GlobalParams.getEventProcessQueue()
             queue.put((str(self.transport.getPeer().host), body))
 
             self._data_buffer = self._data_buffer[headerSize + bodySize:]

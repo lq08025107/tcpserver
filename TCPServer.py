@@ -25,7 +25,7 @@ class ICBCProtocol(protocol.Protocol):
 
 
     def dataReceived(self, data):
-        queue = GlobalParams.getEventProcessThread()
+        queue = GlobalParams.getEventProcessQueue()
         queue.put((str(self.transport.getPeer().host), data))
 
 class ICBCFactory(protocol.ServerFactory):
