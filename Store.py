@@ -27,9 +27,9 @@ class StoreProcessThread(Thread):
                 message = self.StoreQueue.get()
                 parser = MsgParser()
                 try:
-                    dataList = parser.parse(message)
+                    dataList = parser.parseAlarmEvent(message)
                     # save as db
-                    insertsql = parser.constr(dataList)
+                    insertsql = parser.constrAlarmEventSQL(dataList)
                     id = ms.executeAndGetId(insertsql)
                     logger.info("Message has been inserted into db successfully, id: " + str(id))
 

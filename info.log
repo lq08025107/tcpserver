@@ -469,3 +469,18 @@ IntegrityError: (547, 'The INSERT statement conflicted with the FOREIGN KEY cons
 
 2017-03-02 10:01:53,795 - Store - INFO - Message has been inserted into db successfully, id: 201
 
+2017-03-02 20:08:50,020 - __main__ - ERROR - This is not a well formed xml.
+Traceback (most recent call last):
+  File "D:/pyworkspace/TcpServer/MsgParserBox.py", line 57, in parseRegisterData
+    channel_ip = channel.childNodes[0].childNodes[0].nodeValue
+IndexError: tuple index out of range
+2017-03-02 20:14:14,220 - __main__ - ERROR - This is not a well formed xml.
+Traceback (most recent call last):
+  File "D:/pyworkspace/TcpServer/MsgParserBox.py", line 58, in parseRegisterData
+    channel_port = channel.childNodes[1].data
+AttributeError: Element instance has no attribute 'data'
+2017-03-02 20:15:03,871 - __main__ - ERROR - This is not a well formed xml.
+Traceback (most recent call last):
+  File "D:/pyworkspace/TcpServer/MsgParserBox.py", line 57, in parseRegisterData
+    channel_ip = channel.data
+AttributeError: Element instance has no attribute 'data'

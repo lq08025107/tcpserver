@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="30671224-806a-4f51-bdef-7b890f7706e1" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MyQueue.py" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FTPServer.py" afterPath="$PROJECT_DIR$/FTPServer.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GlobalParams.py" afterPath="$PROJECT_DIR$/GlobalParams.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HTTPServer.py" afterPath="$PROJECT_DIR$/HTTPServer.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Reactor.py" afterPath="$PROJECT_DIR$/Reactor.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MsgParserBox.py" afterPath="$PROJECT_DIR$/MsgParserBox.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Store.py" afterPath="$PROJECT_DIR$/Store.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TCPServer.py" afterPath="$PROJECT_DIR$/TCPServer.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TCPServerPack.py" afterPath="$PROJECT_DIR$/TCPServerPack.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.py" afterPath="$PROJECT_DIR$/app.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/logging.yaml" afterPath="$PROJECT_DIR$/config/logging.yaml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/errors.log" afterPath="$PROJECT_DIR$/errors.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/info.log" afterPath="$PROJECT_DIR$/info.log" />
     </list>
@@ -36,8 +28,8 @@
       <file leaf-file-name="GlobalParams.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GlobalParams.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="32" column="28" selection-start-line="32" selection-start-column="28" selection-end-line="32" selection-end-column="28" />
+            <state relative-caret-position="284">
+              <caret line="106" column="41" selection-start-line="106" selection-start-column="41" selection-end-line="106" selection-end-column="41" />
               <folding>
                 <element signature="e#0#12#0" expanded="true" />
               </folding>
@@ -55,11 +47,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+            <state relative-caret-position="38">
+              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -75,23 +67,33 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Store.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Store.py">
+      <file leaf-file-name="MsgParserBox.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/MsgParserBox.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="83">
-              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="9" selection-end-column="36" />
+            <state relative-caret-position="124">
+              <caret line="57" column="40" selection-start-line="57" selection-start-column="40" selection-end-line="57" selection-end-column="40" />
               <folding>
-                <element signature="e#0#34#0" expanded="true" />
+                <element signature="e#0#46#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HTTPServer.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/HTTPServer.py">
+      <file leaf-file-name="Store.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Store.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="5" selection-end-column="14" />
+            <state relative-caret-position="95">
+              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="9" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="example.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/example.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="171">
+              <caret line="9" column="56" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="56" />
               <folding />
             </state>
           </provider>
@@ -122,22 +124,10 @@
       <file leaf-file-name="LogicCoreModule.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/LogicCoreModule.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="35" column="49" selection-start-line="35" selection-start-column="49" selection-end-line="35" selection-end-column="49" />
+            <state relative-caret-position="1177">
+              <caret line="106" column="28" selection-start-line="106" selection-start-column="17" selection-end-line="106" selection-end-column="28" />
               <folding>
                 <element signature="e#23#51#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Reactor.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Reactor.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="21" column="25" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -164,7 +154,6 @@
         <option value="$PROJECT_DIR$/TCPServerModule.py" />
         <option value="$USER_HOME$/Desktop/testthread.py" />
         <option value="$PROJECT_DIR$/utiltool/DBOperator.py" />
-        <option value="$PROJECT_DIR$/MsgParserBox.py" />
         <option value="$PROJECT_DIR$/Xml/client.xml" />
         <option value="$USER_HOME$/Desktop/socketserver.py" />
         <option value="$USER_HOME$/Desktop/twistedserver.py" />
@@ -176,7 +165,6 @@
         <option value="$PROJECT_DIR$/info.log" />
         <option value="$PROJECT_DIR$/Reactor.py" />
         <option value="$PROJECT_DIR$/HTTPServer.py" />
-        <option value="$PROJECT_DIR$/Store.py" />
         <option value="$PROJECT_DIR$/TCPServer.py" />
         <option value="$PROJECT_DIR$/TCPServerPack.py" />
         <option value="$PROJECT_DIR$/FTPServer.py" />
@@ -184,6 +172,8 @@
         <option value="$PROJECT_DIR$/config/ServerConfig.py" />
         <option value="$PROJECT_DIR$/config/logging.yaml" />
         <option value="$PROJECT_DIR$/GlobalParams.py" />
+        <option value="$PROJECT_DIR$/Store.py" />
+        <option value="$PROJECT_DIR$/MsgParserBox.py" />
       </list>
     </option>
   </component>
@@ -253,7 +243,7 @@
       <recent name="C:\Users\HP\PycharmProjects\TcpServer\.RESOURCE" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.app">
+  <component name="RunManager" selected="Python.MsgParserBox">
     <configuration default="false" name="app" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -267,23 +257,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="TcpServer" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="socketserver" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$USER_HOME$/Desktop" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="TcpServer" />
-      <option name="SCRIPT_NAME" value="$USER_HOME$/Desktop/socketserver.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -335,6 +308,23 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="TcpServer" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/LogicCoreModule.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="MsgParserBox" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="TcpServer" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/MsgParserBox.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -475,18 +465,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.app" />
-      <item index="1" class="java.lang.String" itemvalue="Python.socketserver" />
-      <item index="2" class="java.lang.String" itemvalue="Python.twistedserver" />
-      <item index="3" class="java.lang.String" itemvalue="Python.TCPServerPack" />
-      <item index="4" class="java.lang.String" itemvalue="Python.LogicCoreModule" />
+      <item index="1" class="java.lang.String" itemvalue="Python.twistedserver" />
+      <item index="2" class="java.lang.String" itemvalue="Python.TCPServerPack" />
+      <item index="3" class="java.lang.String" itemvalue="Python.LogicCoreModule" />
+      <item index="4" class="java.lang.String" itemvalue="Python.MsgParserBox" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.app" />
-        <item index="1" class="java.lang.String" itemvalue="Python.LogicCoreModule" />
-        <item index="2" class="java.lang.String" itemvalue="Python.TCPServerPack" />
-        <item index="3" class="java.lang.String" itemvalue="Python.twistedserver" />
-        <item index="4" class="java.lang.String" itemvalue="Python.socketserver" />
+        <item index="0" class="java.lang.String" itemvalue="Python.MsgParserBox" />
+        <item index="1" class="java.lang.String" itemvalue="Python.app" />
+        <item index="2" class="java.lang.String" itemvalue="Python.LogicCoreModule" />
+        <item index="3" class="java.lang.String" itemvalue="Python.TCPServerPack" />
+        <item index="4" class="java.lang.String" itemvalue="Python.twistedserver" />
       </list>
     </recent_temporary>
   </component>
@@ -516,20 +506,20 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1296" height="776" extended-state="7" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1296" height="776" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19236884" sideWeight="0.47599164" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19236884" sideWeight="0.47599164" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32901135" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32847896" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32901135" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3090615" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3090615" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24960254" sideWeight="0.4926931" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32901135" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19236884" sideWeight="0.52400833" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3511327" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3511327" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -577,19 +567,27 @@
           <line>54</line>
           <option name="timeStamp" value="36" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/MsgParserBox.py</url>
+          <line>42</line>
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/MsgParserBox.py</url>
+          <line>113</line>
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/MsgParserBox.py</url>
+          <line>63</line>
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="37" />
+      <option name="time" value="40" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/info.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TCPServer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
@@ -810,16 +808,8 @@
         <state relative-caret-position="95">
           <caret line="5" column="27" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
           <folding>
-            <element signature="e#23#37#0" expanded="true" />
+            <element signature="e#23#37#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MsgParserBox.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" column="6" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -849,32 +839,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Store.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="83">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="9" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#34#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Reactor.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="228">
           <caret line="21" column="25" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LogicCoreModule.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="35" column="49" selection-start-line="35" selection-start-column="49" selection-end-line="35" selection-end-column="49" />
-          <folding>
-            <element signature="e#23#51#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -913,21 +883,57 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/GlobalParams.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="32" column="28" selection-start-line="32" selection-start-column="28" selection-end-line="32" selection-end-column="28" />
+        <state relative-caret-position="284">
+          <caret line="106" column="41" selection-start-line="106" selection-start-column="41" selection-end-line="106" selection-end-column="41" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.py">
+    <entry file="file://$PROJECT_DIR$/example.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+        <state relative-caret-position="171">
+          <caret line="9" column="56" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="56" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Store.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="9" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LogicCoreModule.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1177">
+          <caret line="106" column="28" selection-start-line="106" selection-start-column="17" selection-end-line="106" selection-end-column="28" />
+          <folding>
+            <element signature="e#23#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MsgParserBox.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="57" column="40" selection-start-line="57" selection-start-column="40" selection-end-line="57" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#46#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
