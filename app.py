@@ -1,12 +1,3 @@
 import GlobalParams
 
 GlobalParams.initProcessThread()
-
-
-
-
-
-
-
-
-

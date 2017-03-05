@@ -3,6 +3,7 @@ from utiltool.DBOperator import MSSQL
 import GlobalParams
 from threading import Thread
 import Queue
+from processcore.AlarmUtil import AlarmUtil
 from LogModule import setup_logging
 import logging
 
@@ -27,15 +28,18 @@ class StoreProcessThread(Thread):
                 message = self.StoreQueue.get()
                 parser = MsgParser()
                 try:
+
                     dataList = parser.parseAlarmEvent(message)
+                    alarmUtil = AlarmUtil()
+                    alarmUtil.saveAlarmInfo(dataList)
                     # save as db
-                    insertsql = parser.constrAlarmEventSQL(dataList)
-                    id = ms.executeAndGetId(insertsql)
-                    logger.info("Message has been inserted into db successfully, id: " + str(id))
+                    #insertsql = parser.constrAlarmEventSQL(dataList)
+                    #id = ms.executeAndGetId(insertsql)
+                    #logger.info("Message has been inserted into db successfully, id: " + str(id))
 
                     # send to application module
-                    notice_queue = GlobalParams.getNoticeProcessQueue()
-                    notice_queue.put(id)
+                    #notice_queue = GlobalParams.getNoticeProcessQueue()
+                    #notice_queue.put(id)
 
                 except Exception, e:
                     # log as file

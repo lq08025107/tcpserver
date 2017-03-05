@@ -1,10 +1,11 @@
 # -*- coding=utf-8 -*-
 from threading import Thread
 import Queue
-import time
 import GlobalParams
 from xml.dom import minidom
 from utiltool.DBOperator import MSSQL
+from processcore.AlarmUtil import AlarmUtil
+from CreateSQL import SQLCluster
 from LogModule import setup_logging
 import logging
 import sys
@@ -104,11 +105,20 @@ class EventProcessThread(Thread):
         if type == 100:
             # 执行操作1=============
             #print str(params)
+            #id 包id
             id = params['1'].encode("utf-8")
             user =  params['2'].encode("utf-8")
             time = params['3'].encode("utf-8")
             operation = params['4'].encode("utf-8")
-            self.event2record(id, user, time, operation)
+            #客户端处理包信息，通知processcore
+            alarmUtil = AlarmUtil()
+            alarmUtil.endPackageByUser(id, user, time,operation)
+
+            sqlcluster = SQLCluster()
+            eventList = sqlcluster.selectAlarmEventByPackageId(id)
+            #将处理的包中的所有的event移到Record中
+            for event in eventList:
+                self.event2record(eventList['ID'], user, time, operation)
             RetCode = id
             # RetInfo = [(1, "11111"), (2, "22222")]
         elif type == 102:
@@ -132,23 +142,28 @@ class EventProcessThread(Thread):
     def event2record(self, id, procUserName, procTime, procRecord):
         ms = MSSQL()
         try:
-            selectsql = "SELECT OrgID, DeviceID, DeviceName, ChannelID, AlarmTime, AlarmType, Score, PictrueUrl, \
-            ProcedureData FROM AlarmEvent where ID=" + str(id)
+            selectsql = "SELECT DeviceID, ChannelID, AlarmTime, AlarmType, Score, PictrueUrl, \
+            Status, ProcedureData, AlarmLevel, PackageID FROM AlarmEvent where ID=" + str(id)
+            sqlcluster = SQLCluster()
+
             resList = ms.ExecQuery(selectsql)[0]
+            orgId = sqlcluster.selectOrgIdByPackageId(resList['PackageID'])
             insertsql = "INSERT INTO AlarmEventRecord (OrgID, DeviceID, AlarmTime, AlarmType, ChannelID, Score, PictrueUrl, ProcUserName," \
-                        "ProcTime, ProcRecord, ProcedureData) VALUES (" + "NULL" + "," + str(
+                        "ProcTime, ProcRecord, ProcedureData,AlarmLevel, PackageID) VALUES (" + str(orgId) + "," + str(
                 resList["DeviceID"]) + "," + "'" + str(resList["AlarmTime"]) + "'" + "," + str(resList["AlarmType"]) \
                         + "," + str(resList["ChannelID"]) + "," + str(resList["Score"]) + "," + "'" + str(
                 resList["PictrueUrl"]) + "'" \
                         + "," + "'" + str(procUserName) + "'" + "," + "'" + str(procTime) + "'" + "," + "'" + str(
-                procRecord) + "'" + "," + "'" + str(resList["ProcedureData"]) + "'" + ")"
+                procRecord) + "'" + "," + "'" + str(resList["ProcedureData"]) + "'" + "," + str(resList["AlarmLevel"]) +","\
+                        +str(resList["PackageID"])+ ")"
             deletesql = "DELETE FROM AlarmEvent where ID=" + str(id)
+            print insertsql
 
             ms.ExecMove(id, insertsql, deletesql)
-            logger.info("%s process a message and write: %s" % (str(procUserName), str(procRecord)))
+            logger.info("%s process a package and write: %s" % (str(procUserName), str(procRecord)))
 
         except Exception, e:
-            logger.error("There is no Message with id: " + str(id), exc_info=True)
+            logger.error(e, exc_info=True)
 
 class NoticeProcessThread(Thread):
     def __init__(self):
@@ -186,14 +201,34 @@ class NoticeProcessThread(Thread):
         xmlstring = dom.toxml();
         return xmlstring
 
+class PCProcessThread(Thread):
+    def __init__(self):
+        Thread.__init__(self)
+        self.auSco = GlobalParams.GetAutoScoreInstance()
+        self.IsRunning = True
+
+    def StopThread(self):
+        self.IsRunning = False
+
+    def run(self):
+        logger.info("ProcessCoreListener " + self.getName() + " Start Running")
+        while self.IsRunning:
+            packageid = self.auSco.respQueue.get()
+            self.sqlcluster.updatePackageFinishInfo(packageid)
+
+        logger.info("ProcessCoreListener " + self.getName() + " Stop Running")
+
+
+
 if __name__ == '__main__':
 
     ept = EventProcessThread()
-    xmls = ept.buildXml('1', '101', 300, '')
-    print xmls
-    npt = NoticeProcessThread()
-    xml = npt.buildxml4client(8)
-    print xml
+    ept.event2record(208,'liuqiang', '2017-02-28 14:07:17.000', '已处理')
+    #xmls = ept.buildXml('1', '101', 300, '')
+    #print xmls
+    #npt = NoticeProcessThread()
+    #xml = npt.buildxml4client(8)
+    #print xml
     
 
 

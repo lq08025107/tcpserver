@@ -54,8 +54,8 @@ class MsgParser(object):
             DeviceID = xmlfile.getElementsByTagName("DeviceID")[0].childNodes[0].nodeValue
             for channel in xmlfile.getElementsByTagName("Channel"):
                 channel_id = channel.getAttribute("id")
-                channel_ip = channel.data
-                channel_port = channel.childNodes[1].data
+                channel_ip = channel.getElementsByTagName("ChannelIP")[0].firstChild.nodeValue
+                channel_port = channel.getElementsByTagName("ChannelPort")[0].firstChild.nodeValue
                 Channels[channel_id] = [channel_ip, channel_port]
 
         except Exception, e:
@@ -63,11 +63,11 @@ class MsgParser(object):
 
         return DeviceID, Channels
 
-    def constrAlarmEventSQL(self, nodeList):
-        query = "INSERT INTO AlarmEvent(DeviceID, ChannelID, AlarmTime, AlarmType, Score, PictrueUrl, ProcedureData) VALUES ("\
+    def constrAlarmEventSQL(self, nodeList, alarmLevel):
+        query = "INSERT INTO AlarmEvent(DeviceID, ChannelID, AlarmTime, AlarmType, Score, PictrueUrl, ProcedureData, AlarmLevel) VALUES ("\
                     + nodeList['DeviceID'] +","+ nodeList['ChannelID']+"," + "'" + nodeList['AlarmTime'] + "'"+ "," + nodeList['AlarmType']+"," + nodeList['Score'] \
-                    +"," +"'"+ nodeList['PictureData']+"'"+"," + "'" +nodeList['Procedure']+"'" +")"
-        print query
+                    +"," +"'"+ nodeList['PictureData']+"'"+"," + "'" +nodeList['Procedure']+"'" + "," + str(alarmLevel) +")"
+
         return query
 def main():
     msgparser = MsgParser()
@@ -105,14 +105,15 @@ def main():
 """
     msgParser = MsgParser()
     #dataList = msgParser.docparse()
-    #dataList = msgParser.parseAlarmEvent(xml)
-    #querytest = msgParser.constr(dataList)
-    #print querytest
+    dataList = msgParser.parseAlarmEvent(xml)
+    querytest = msgParser.constrAlarmEventSQL(dataList,1)
+
+    print querytest
     #msgParser.constrAlarmEventSQL(dataList)
-    deviceid, channels = msgParser.parseRegisterData(registerxml)
-    print deviceid
-    for channel in channels:
-        print channel[0]
+    #deviceid, channels = msgParser.parseRegisterData(registerxml)
+    #print deviceid
+    #print channels['1']
+
 
 
 if __name__ == '__main__':

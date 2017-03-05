@@ -4,8 +4,11 @@ import pymssql
 from DBUtils.PooledDB import PooledDB
 
 from config import DBConfig
+from LogModule import setup_logging
+import logging
 
-
+setup_logging()
+logger = logging.getLogger(__name__)
 class MSSQL(object):
     __pool = None
     def __init__(self):
@@ -24,19 +27,26 @@ class MSSQL(object):
         self._cursor.close()
         self._conn.close()
 
+
     def ExecQuery(self, sql):
+        if self._cursor._closed is True:
+            self.__init__()
         self._cursor.execute(sql)
         resList = self._cursor.fetchall()
-        return resList
         self.dispose()
+        return resList
 
     def ExecNonQuery(self, sql):
+        if self._cursor._closed is True:
+            self.__init__()
         self._cursor.execute(sql)
         self._conn.commit()
         self.dispose()
 
     #liuqiang add for purpose of getting id
-    def executeAndGetId(self, sql, param=None):  
+    def executeAndGetId(self, sql, param=None):
+        if self._cursor._closed is True:
+            self.__init__()
         if param == None:
             self._cursor.execute(sql)
         else:
@@ -47,13 +57,14 @@ class MSSQL(object):
         return id
 
     def ExecMove(self, id, insertsql, deletesql):
-
+        if self._cursor._closed is True:
+            self.__init__()
         try:
             self._cursor.execute(insertsql)
             self._cursor.execute(deletesql)
             self._conn.commit()
         except Exception, e:
-
+            logger.error(e)
             self._conn.rollback()
         self.dispose()
         

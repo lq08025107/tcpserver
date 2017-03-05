@@ -12,8 +12,9 @@ logger = logging.getLogger(__name__)
 
 
 class ICBCHTTP(Resource):
-    def render_Get(self, request):
-        return ''
+    def render_GET(self, request):
+        logger.info("Received get request from host: " + str(request.client.host) + ".")
+        return 'Hello World! I am the Server for ICBC!'
 
     def render_POST(self, request):
         queue = GlobalParams.getStoreProcessQueue()

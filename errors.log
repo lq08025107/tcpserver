@@ -56,3 +56,50 @@ Traceback (most recent call last):
   File "D:/pyworkspace/TcpServer/MsgParserBox.py", line 57, in parseRegisterData
     channel_ip = channel.data
 AttributeError: Element instance has no attribute 'data'
+2017-03-03 08:49:44,676 - __main__ - ERROR - This is not a well formed xml.
+Traceback (most recent call last):
+  File "D:/pyworkspace/TcpServer/MsgParserBox.py", line 57, in parseRegisterData
+    channel_ip = channel.getElementByTagName("ChannelIP")[0].firstChild.nodeValue
+AttributeError: Element instance has no attribute 'getElementByTagName'
+2017-03-05 17:22:49,150 - __main__ - ERROR - There is no Message with id: 208
+Traceback (most recent call last):
+  File "D:/pyworkspace/TcpServer/LogicCoreModule.py", line 155, in event2record
+    +str(resList["PackageID"])+ ")"
+KeyError: 'OrgID'
+2017-03-05 17:30:39,611 - __main__ - ERROR - There is no Message with id: 208
+Traceback (most recent call last):
+  File "D:/pyworkspace/TcpServer/LogicCoreModule.py", line 155, in event2record
+    +str(resList["PackageID"])+ ")"
+KeyError: 'OrgID'
+2017-03-05 18:06:11,000 - __main__ - ERROR - There is no Message with id: 208
+Traceback (most recent call last):
+  File "D:/pyworkspace/TcpServer/LogicCoreModule.py", line 155, in event2record
+    +str(resList["PackageID"])+ ")"
+KeyError: 'OrgID'
+2017-03-05 18:07:00,933 - __main__ - ERROR - 'OrgID'
+Traceback (most recent call last):
+  File "D:/pyworkspace/TcpServer/LogicCoreModule.py", line 155, in event2record
+    +str(resList["PackageID"])+ ")"
+KeyError: 'OrgID'
+2017-03-05 18:09:59,039 - __main__ - ERROR - list index out of range
+Traceback (most recent call last):
+  File "D:/pyworkspace/TcpServer/LogicCoreModule.py", line 150, in event2record
+    orgId = sqlcluster.selectOrgIdByPackageId(resList['PackageID'])
+  File "D:\pyworkspace\TcpServer\CreateSQL.py", line 69, in selectOrgIdByPackageId
+    orgid = ms.ExecQuery(sql)[0]['OrgID']
+IndexError: list index out of range
+2017-03-05 18:11:13,801 - __main__ - ERROR - list index out of range
+Traceback (most recent call last):
+  File "D:/pyworkspace/TcpServer/LogicCoreModule.py", line 150, in event2record
+    orgId = sqlcluster.selectOrgIdByPackageId(resList['PackageID'])
+  File "D:\pyworkspace\TcpServer\CreateSQL.py", line 69, in selectOrgIdByPackageId
+    orgid = ms.ExecQuery(sql)[0]['OrgID']
+IndexError: list index out of range
+2017-03-05 18:16:05,967 - utiltool.DBOperator - ERROR - (102, "Incorrect syntax near '\xef\xbc\x8c'.DB-Lib error message 20018, severity 15:\nGeneral SQL Server error: Check messages from the SQL Server\n")
+
+2017-03-05 18:17:23,635 - utiltool.DBOperator - ERROR - (102, "Incorrect syntax near '\xef\xbc\x8c'.DB-Lib error message 20018, severity 15:\nGeneral SQL Server error: Check messages from the SQL Server\n")
+
+2017-03-05 18:18:53,321 - utiltool.DBOperator - ERROR - (102, "Incorrect syntax near '\xef\xbc\x8c'.DB-Lib error message 20018, severity 15:\nGeneral SQL Server error: Check messages from the SQL Server\n")
+
+2017-03-05 18:20:11,599 - utiltool.DBOperator - ERROR - (547, 'The INSERT statement conflicted with the FOREIGN KEY constraint "RecordPackageID". The conflict occurred in database "IVAS", table "dbo.AlarmPackage2", column \'ID\'.DB-Lib error message 20018, severity 16:\nGeneral SQL Server error: Check messages from the SQL Server\n')
+

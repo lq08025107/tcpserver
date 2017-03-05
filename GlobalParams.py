@@ -2,8 +2,11 @@ import Queue
 import random
 from LogicCoreModule import EventProcessThread
 from LogicCoreModule import NoticeProcessThread
+from LogicCoreModule import PCProcessThread
 from Store import StoreProcessThread
+from processcore.GenTable import MenTable
 from FTPServer import FTPServerThread
+from processcore.AutoSco import AutoScore
 from Reactor import TwistedProcessThread
 from LogModule import setup_logging
 
@@ -14,15 +17,21 @@ setup_logging()
 logger = logging.getLogger(__name__)
 
 class GlobalParams(object):
-    EventInitCount = 3
+    EventInitCount = 1
     NoticeInitCount = 1
     StoreInitCount = 1
+    PCInitCount = 1
+
     EventProcessThreads = []
     NoticeProcessThreads = []
     StoreProcessThreads = []
+    PCProcessThreads = []
 
     ClientOnlineList = {}
     ClientOnlineLock = False
+
+    autoSco = AutoScore()
+    genTable = MenTable()
 
 def initProcessThread():
     logger.info("Start Initlizing Process Thread.")
@@ -47,6 +56,11 @@ def initProcessThread():
         storeProcessThread = StoreProcessThread()
         GlobalParams.StoreProcessThreads.append(storeProcessThread)
         storeProcessThread.start()
+
+    for i in range(0, GlobalParams.PCInitCount):
+        pcProcessThread = PCProcessThread()
+        GlobalParams.StoreProcessThreads.append(pcProcessThread)
+        pcProcessThread.start()
 
 
 
@@ -79,6 +93,13 @@ def getNoticeProcessQueue():
 def getStoreProcessQueue():
     i = random.randint(0, len(GlobalParams.StoreProcessThreads) - 1)
     return GlobalParams.StoreProcessThreads[i].StoreQueue
+
+def GetAutoScoreInstance():
+    return GlobalParams.autoSco
+
+def GetGenTable():
+    return GlobalParams.genTable
+
 
 
 def GetOneClient(ClientIP):
