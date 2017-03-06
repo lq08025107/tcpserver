@@ -41,7 +41,7 @@ class MenTable:
         levels = conn.fetchRows(alarm_level_table)
 
         for i in results:
-            self.arr[i[1] - 1][i[2] - 1][i[4] - 1][i[5] - 1][i[6] - 1] = levels[i[9] - 1][3]
+            self.arr[i[1] - 1][i[2] - 1][i[4] - 1][i[5] - 1][i[6] - 1] = levels[i[9] - 1][0]
         logger.info('arr: %s' % json.dumps(self.arr, encoding='UTF-8', ensure_ascii=False))
 
     def getList(self, arr, index):

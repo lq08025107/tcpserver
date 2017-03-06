@@ -25,14 +25,15 @@ class AlarmUtil:
 
         id = 1
 
-        orgId = self.sqlCluster.deviceID2orgID(dictAlarmEvent['DeviceID'])
-        positionId = self.sqlCluster.deviceID2position(dictAlarmEvent['DeviceID'])
-        alarmId = dictAlarmEvent['AlarmType']
-        dateArrId = dictAlarmEvent['DateAttribute']
-        timeArrId = dictAlarmEvent['TimeAttribute']
+        orgId = self.sqlcluster.deviceID2orgID(dictAlarmEvent['DeviceID'])
+        orgType = self.sqlcluster.selectOrgTypeByOrgId(orgId)#Type
+        positionId = self.sqlcluster.deviceID2position(dictAlarmEvent['DeviceID'])
+        alarmId = int(dictAlarmEvent['AlarmType'])
+        dateArrId = int(dictAlarmEvent['DateAttribute'])
+        timeArrId = int(dictAlarmEvent['TimeAttribute'])
 
         gentable = GlobalParams.GetGenTable()
-        alarmLevel = gentable.query([orgId, positionId, alarmId, dateArrId, timeArrId])
+        alarmLevel = gentable.query([orgType, positionId, alarmId, dateArrId, timeArrId])
 
         parser = MsgParser()
         # save as db
@@ -41,11 +42,11 @@ class AlarmUtil:
         logger.info("Message has been inserted into db successfully, id: " + str(id))
 
         auSco = GlobalParams.GetAutoScoreInstance()
-        auSco.reqQueue.put({'orgId': orgId, 'deviceId': dictAlarmEvent['DeviceID'], 'alarmId': alarmId, 'dateArrId': dateArrId, 'timeArrId': timeArrId, 'currentAlarmLevel': alarmLevel})
+        auSco.reqQueue.put({'orgId': orgId, 'deviceId': dictAlarmEvent['DeviceID'], 'alarmId': alarmId, 'dateArrId': dateArrId, 'timeArrId': timeArrId, 'currentAlarmLevel': alarmLevel, 'id': id})
+        logger.info("put message to process core")
 
 
-
-    def createPackage(self, orgId, level, isDeal = 0, isFinish = 0):
+    def createPackage(self, orgId, level, id, isDeal = 0, isFinish = 0):
         #创建新包
         packageId = self.sqlcluster.createPackage(orgId, level, isDeal, isFinish)
 
@@ -55,6 +56,7 @@ class AlarmUtil:
         #通知客户端
         notice_queue = GlobalParams.getNoticeProcessQueue()
         notice_queue.put(packageId)
+        logger.info("create package: " + str(packageId))
         return packageId
 
     def updatePackageInfo(self, packageId, id, level):
@@ -71,17 +73,21 @@ class AlarmUtil:
     def getMsg(self):
         # 获取要结包的packageId
         auSco = GlobalParams.GetAutoScoreInstance()
-        packageid = auSco.respQueue.get()
-        self.sqlcluster.updatePackageFinishInfo(packageid)
+        dict = auSco.respQueue.get()
+        self.sqlcluster.updatePackageFinishInfo(dict['packageId'])
 
 
     def endPackageByUser(self, packageId, userName, time, record):
         msg = {}
         auSco = GlobalParams.GetAutoScoreInstance()
-        self.sqlcluster.updatePackageFinishInfoByUser(packageId, userName, time, record)
+        #self.sqlcluster.updatePackageFinishInfoByUser(packageId, userName, time, record)
         orgId = self.sqlcluster.selectOrgIdByPackageId(packageId)
         msg['orgId'] = orgId
-        msg['stop'] = 1
+        msg['userName'] = userName
+        msg['time'] = time
+        msg['record'] = record
+        msg['packageId'] = packageId
+        msg['stop'] = 'End by client'
         auSco.reqQueue.put(msg)
         #auSco.reqQueue.put({'orgId': 1, 'stop': 1})
 

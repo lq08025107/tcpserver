@@ -50,16 +50,21 @@ class SQLCluster():
         sql = "UPDATE AlarmEvent SET PackageID =" + str(packageId) + "WHERE ID = " + str(Id)
         ms.ExecNonQuery(sql)
 
-    def updatePackageFinishInfo(self, packageId):
-        ms = MSSQL()
-        sql = "UPDATE AlarmPackage SET IsFinish =" + str(1) +", FinishReason = " + "'Finished: Program'" + " WHERE ID = " + str(packageId)
-        ms.ExecNonQuery(sql)
+    #def updatePackageFinishInfo(self, packageId):
+     #   ms = MSSQL()
+     #   sql = "UPDATE AlarmPackage SET IsFinish =" + str(1) +", FinishReason = " + "'Finished: Program'" + " WHERE ID = " + str(packageId)
+     #   ms.ExecNonQuery(sql)
 
-    def updatePackageFinishInfoByUser(self, packageId, userName, time, record):
+    def updatePackageFinishInfo(self, packageId, userName, time, record):
         ms = MSSQL()
-        sql = "UPDATE AlarmPackage SET IsFinish =" + str(1) + ", FinishReason = " + "'Finished : User'"\
-              + ", IsDeal = " + str(1) + ", ProcUserName = " + "'"+ str(userName) + "'"+", ProcTime = " + "'"+str(time) +"'"\
-              + ", ProcRecord = " + "'"+str(record) + "'" + "WHERE ID = " + str(packageId)
+        if userName == None:
+            sql = "UPDATE AlarmPackage SET IsFinish =" + str(1) + ", FinishReason = " + "'Finished : Program'"\
+                  + "WHERE ID = " + str(packageId)
+        else:
+            sql = "UPDATE AlarmPackage SET IsFinish =" + str(1) + ", FinishReason = " + "'Finished : User'" \
+                  + ", IsDeal = " + str(1) + ", ProcUserName = " + "'" + str(
+                userName) + "'" + ", ProcTime = " + "'" + str(time) + "'" \
+                  + ", ProcRecord = " + "'" + str(record) + "'" + "WHERE ID = " + str(packageId)
         print sql
         ms.ExecNonQuery(sql)
 
@@ -74,6 +79,11 @@ class SQLCluster():
         sql = "SELECT * FROM AlarmEvent WHERE PackageID = " + str(packageId)
         eventList = ms.ExecQuery(sql)
         return eventList
+    def selectOrgTypeByOrgId(self,orgId):
+        ms = MSSQL()
+        sql = "SELECT * FROM Orgnization WHERE OrgID = " + str(orgId)
+        orgType = ms.ExecQuery(sql)[0]['OrgType']
+        return orgType
 if __name__ == '__main__':
     sqlcluster = SQLCluster()
     print sqlcluster.deviceID2orgID(str(1))

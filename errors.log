@@ -103,3 +103,136 @@ IndexError: list index out of range
 
 2017-03-05 18:20:11,599 - utiltool.DBOperator - ERROR - (547, 'The INSERT statement conflicted with the FOREIGN KEY constraint "RecordPackageID". The conflict occurred in database "IVAS", table "dbo.AlarmPackage2", column \'ID\'.DB-Lib error message 20018, severity 16:\nGeneral SQL Server error: Check messages from the SQL Server\n')
 
+2017-03-06 09:55:49,681 - Store - ERROR - Error occured!!!
+Traceback (most recent call last):
+  File "D:\pyworkspace\TcpServer\Store.py", line 34, in run
+    alarmUtil.saveAlarmInfo(dataList)
+  File "D:\pyworkspace\TcpServer\processcore\AlarmUtil.py", line 28, in saveAlarmInfo
+    orgId = self.sqlCluster.deviceID2orgID(dictAlarmEvent['DeviceID'])
+AttributeError: AlarmUtil instance has no attribute 'sqlCluster'
+2017-03-06 10:02:20,653 - Store - ERROR - Error occured!!!
+Traceback (most recent call last):
+  File "D:\pyworkspace\TcpServer\Store.py", line 34, in run
+    alarmUtil.saveAlarmInfo(dataList)
+  File "D:\pyworkspace\TcpServer\processcore\AlarmUtil.py", line 35, in saveAlarmInfo
+    alarmLevel = gentable.query([orgId, positionId, alarmId, dateArrId, timeArrId])
+  File "D:\pyworkspace\TcpServer\processcore\GenTable.py", line 58, in query
+    return self.arr[i[0] - 1][i[1] - 1][i[2] - 1][i[3] - 1][i[4] - 1]
+IndexError: list index out of range
+2017-03-06 10:05:14,023 - Store - ERROR - Error occured!!!
+Traceback (most recent call last):
+  File "D:\pyworkspace\TcpServer\Store.py", line 34, in run
+    alarmUtil.saveAlarmInfo(dataList)
+  File "D:\pyworkspace\TcpServer\processcore\AlarmUtil.py", line 35, in saveAlarmInfo
+    print "%d, %d, %d, %d, %d" % (orgId, positionId, alarmId,dateArrId,timeArrId)
+TypeError: %d format: a number is required, not unicode
+2017-03-06 10:09:27,395 - Store - ERROR - Error occured!!!
+Traceback (most recent call last):
+  File "D:\pyworkspace\TcpServer\Store.py", line 34, in run
+    alarmUtil.saveAlarmInfo(dataList)
+  File "D:\pyworkspace\TcpServer\processcore\AlarmUtil.py", line 36, in saveAlarmInfo
+    alarmLevel = gentable.query([orgId, positionId, alarmId, dateArrId, timeArrId])
+  File "D:\pyworkspace\TcpServer\processcore\GenTable.py", line 58, in query
+    return self.arr[i[0] - 1][i[1] - 1][i[2] - 1][i[3] - 1][i[4] - 1]
+IndexError: list index out of range
+2017-03-06 10:10:29,678 - Store - ERROR - Error occured!!!
+Traceback (most recent call last):
+  File "D:\pyworkspace\TcpServer\Store.py", line 34, in run
+    alarmUtil.saveAlarmInfo(dataList)
+  File "D:\pyworkspace\TcpServer\processcore\AlarmUtil.py", line 40, in saveAlarmInfo
+    alarmLevel = gentable.query([orgId, positionId, alarmId, dateArrId, timeArrId])
+  File "D:\pyworkspace\TcpServer\processcore\GenTable.py", line 58, in query
+    return self.arr[i[0] - 1][i[1] - 1][i[2] - 1][i[3] - 1][i[4] - 1]
+IndexError: list index out of range
+2017-03-06 14:44:41,065 - Store - ERROR - Error occured!!!
+Traceback (most recent call last):
+  File "D:\pyworkspace\TcpServer\Store.py", line 33, in run
+    alarmUtil = AlarmUtil()
+  File "D:\pyworkspace\TcpServer\processcore\AlarmUtil.py", line 14, in __init__
+    self.ms = MSSQL()
+  File "D:\pyworkspace\TcpServer\utiltool\DBOperator.py", line 15, in __init__
+    self._conn = MSSQL.__getConn()
+  File "D:\pyworkspace\TcpServer\utiltool\DBOperator.py", line 23, in __getConn
+    database=DBConfig.DBNAME, charset=DBConfig.DBCHAR, as_dict=True)
+  File "C:\Python27\lib\site-packages\DBUtils\PooledDB.py", line 273, in __init__
+    idle = [self.dedicated_connection() for i in range(mincached)]
+  File "C:\Python27\lib\site-packages\DBUtils\PooledDB.py", line 345, in dedicated_connection
+    return self.connection(False)
+  File "C:\Python27\lib\site-packages\DBUtils\PooledDB.py", line 334, in connection
+    con = self.steady_connection()
+  File "C:\Python27\lib\site-packages\DBUtils\PooledDB.py", line 282, in steady_connection
+    *self._args, **self._kwargs)
+  File "C:\Python27\lib\site-packages\DBUtils\SteadyDB.py", line 142, in connect
+    failures, ping, closeable, *args, **kwargs)
+  File "C:\Python27\lib\site-packages\DBUtils\SteadyDB.py", line 194, in __init__
+    self._store(self._create())
+  File "C:\Python27\lib\site-packages\DBUtils\SteadyDB.py", line 198, in _create
+    con = self._creator(*self._args, **self._kwargs)
+  File "pymssql.pyx", line 641, in pymssql.connect (pymssql.c:10824)
+OperationalError: (20009, 'DB-Lib error message 20009, severity 9:\nUnable to connect: Adaptive Server is unavailable or does not exist (10.25.18.9:1433)\nNet-Lib error during Unknown error (10060)\n')
+2017-03-06 14:49:35,994 - Store - ERROR - Error occured!!!
+Traceback (most recent call last):
+  File "D:\pyworkspace\TcpServer\Store.py", line 33, in run
+    alarmUtil = AlarmUtil()
+  File "D:\pyworkspace\TcpServer\processcore\AlarmUtil.py", line 14, in __init__
+    self.ms = MSSQL()
+  File "D:\pyworkspace\TcpServer\utiltool\DBOperator.py", line 15, in __init__
+    self._conn = MSSQL.__getConn()
+  File "D:\pyworkspace\TcpServer\utiltool\DBOperator.py", line 23, in __getConn
+    database=DBConfig.DBNAME, charset=DBConfig.DBCHAR, as_dict=True)
+  File "C:\Python27\lib\site-packages\DBUtils\PooledDB.py", line 273, in __init__
+    idle = [self.dedicated_connection() for i in range(mincached)]
+  File "C:\Python27\lib\site-packages\DBUtils\PooledDB.py", line 345, in dedicated_connection
+    return self.connection(False)
+  File "C:\Python27\lib\site-packages\DBUtils\PooledDB.py", line 334, in connection
+    con = self.steady_connection()
+  File "C:\Python27\lib\site-packages\DBUtils\PooledDB.py", line 282, in steady_connection
+    *self._args, **self._kwargs)
+  File "C:\Python27\lib\site-packages\DBUtils\SteadyDB.py", line 142, in connect
+    failures, ping, closeable, *args, **kwargs)
+  File "C:\Python27\lib\site-packages\DBUtils\SteadyDB.py", line 194, in __init__
+    self._store(self._create())
+  File "C:\Python27\lib\site-packages\DBUtils\SteadyDB.py", line 198, in _create
+    con = self._creator(*self._args, **self._kwargs)
+  File "pymssql.pyx", line 641, in pymssql.connect (pymssql.c:10824)
+OperationalError: (20009, 'DB-Lib error message 20009, severity 9:\nUnable to connect: Adaptive Server is unavailable or does not exist (10.25.18.9:1433)\nNet-Lib error during Unknown error (10060)\n')
+2017-03-06 15:39:07,525 - Store - ERROR - Error occured!!!
+Traceback (most recent call last):
+  File "D:\pyworkspace\TcpServer\Store.py", line 33, in run
+    alarmUtil = AlarmUtil()
+  File "D:\pyworkspace\TcpServer\processcore\AlarmUtil.py", line 14, in __init__
+    self.ms = MSSQL()
+  File "D:\pyworkspace\TcpServer\utiltool\DBOperator.py", line 15, in __init__
+    self._conn = MSSQL.__getConn()
+  File "D:\pyworkspace\TcpServer\utiltool\DBOperator.py", line 23, in __getConn
+    database=DBConfig.DBNAME, charset=DBConfig.DBCHAR, as_dict=True)
+  File "C:\Python27\lib\site-packages\DBUtils\PooledDB.py", line 273, in __init__
+    idle = [self.dedicated_connection() for i in range(mincached)]
+  File "C:\Python27\lib\site-packages\DBUtils\PooledDB.py", line 345, in dedicated_connection
+    return self.connection(False)
+  File "C:\Python27\lib\site-packages\DBUtils\PooledDB.py", line 334, in connection
+    con = self.steady_connection()
+  File "C:\Python27\lib\site-packages\DBUtils\PooledDB.py", line 282, in steady_connection
+    *self._args, **self._kwargs)
+  File "C:\Python27\lib\site-packages\DBUtils\SteadyDB.py", line 142, in connect
+    failures, ping, closeable, *args, **kwargs)
+  File "C:\Python27\lib\site-packages\DBUtils\SteadyDB.py", line 194, in __init__
+    self._store(self._create())
+  File "C:\Python27\lib\site-packages\DBUtils\SteadyDB.py", line 198, in _create
+    con = self._creator(*self._args, **self._kwargs)
+  File "pymssql.pyx", line 641, in pymssql.connect (pymssql.c:10824)
+OperationalError: (20009, 'DB-Lib error message 20009, severity 9:\nUnable to connect: Adaptive Server is unavailable or does not exist (10.25.18.9:1433)\nNet-Lib error during Unknown error (10060)\n')
+2017-03-06 16:53:44,236 - Store - ERROR - Error occured!!!
+Traceback (most recent call last):
+  File "D:\pyworkspace\TcpServer\Store.py", line 32, in run
+    dataList = parser.parseAlarmEvent(message)
+  File "D:\pyworkspace\TcpServer\MsgParserBox.py", line 42, in parseAlarmEvent
+    DateAttribute = dom.getElementsByTagName("DateAttribute")[0].childNodes[0].nodeValue
+IndexError: list index out of range
+2017-03-06 16:57:54,736 - Store - ERROR - Error occured!!!
+Traceback (most recent call last):
+  File "D:\pyworkspace\TcpServer\Store.py", line 32, in run
+    dataList = parser.parseAlarmEvent(message)
+  File "D:\pyworkspace\TcpServer\MsgParserBox.py", line 42, in parseAlarmEvent
+    DateAttribute = dom.getElementsByTagName("DateAttribute")[0].childNodes[0].nodeValue
+IndexError: list index out of range

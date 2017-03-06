@@ -1,10 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WarningData>
-	<AlarmTypeID>1</AlarmTypeID>
+	<AlarmTypeID>2</AlarmTypeID>
 	<AlarmTime>2016-04-12 08:48:54.000</AlarmTime>
 	<Score>65.2</Score>
-	<DeviceID>300</DeviceID>
-	<ChannelID>3</ChannelID>
+	<DeviceID>7</DeviceID>
+	<ChannelID>2</ChannelID>
+	<DateAttribute>1</DateAttribute>
+	<TimeAttribute>1</TimeAttribute>
+	<Procedure>Closing(time,1) -> 4 -> Foot(time,1) -> 4 -> Face(time,1) -> 1 -> Foot(time,1)
+	</Procedure>
+	<PictureData>ftp:\\10.25.18.30\foo\bar\something.jpg</PictureData>
+</WarningData>
+<WarningData>
+	<AlarmTypeID>2</AlarmTypeID>
+	<AlarmTime>2016-04-12 08:48:54.000</AlarmTime>
+	<Score>65.2</Score>
+	<DeviceID>8</DeviceID>
+	<ChannelID>2</ChannelID>
+	<DateAttribute>1</DateAttribute>
+	<TimeAttribute>1</TimeAttribute>
+	<Procedure>Closing(time,1) -> 4 -> Foot(time,1) -> 4 -> Face(time,1) -> 1 -> Foot(time,1)
+	</Procedure>
+	<PictureData>ftp:\\10.25.18.30\foo\bar\something.jpg</PictureData>
+</WarningData>
+<WarningData>
+	<AlarmTypeID>2</AlarmTypeID>
+	<AlarmTime>2016-04-12 08:48:54.000</AlarmTime>
+	<Score>65.2</Score>
+	<DeviceID>9</DeviceID>
+	<ChannelID>2</ChannelID>
+	<DateAttribute>1</DateAttribute>
+	<TimeAttribute>1</TimeAttribute>
+	<Procedure>Closing(time,1) -> 4 -> Foot(time,1) -> 4 -> Face(time,1) -> 1 -> Foot(time,1)
+	</Procedure>
+	<PictureData>ftp:\\10.25.18.30\foo\bar\something.jpg</PictureData>
+</WarningData>
+<WarningData>
+	<AlarmTypeID>2</AlarmTypeID>
+	<AlarmTime>2016-04-12 08:48:54.000</AlarmTime>
+	<Score>65.2</Score>
+	<DeviceID>10</DeviceID>
+	<ChannelID>2</ChannelID>
+	<DateAttribute>1</DateAttribute>
+	<TimeAttribute>1</TimeAttribute>
+	<Procedure>Closing(time,1) -> 4 -> Foot(time,1) -> 4 -> Face(time,1) -> 1 -> Foot(time,1)
+	</Procedure>
+	<PictureData>ftp:\\10.25.18.30\foo\bar\something.jpg</PictureData>
+</WarningData>
+<WarningData>
+	<AlarmTypeID>2</AlarmTypeID>
+	<AlarmTime>2016-04-12 08:48:54.000</AlarmTime>
+	<Score>65.2</Score>
+	<DeviceID>1</DeviceID>
+	<ChannelID>2</ChannelID>
+	<DateAttribute>1</DateAttribute>
+	<TimeAttribute>1</TimeAttribute>
+	<Procedure>Closing(time,1) -> 4 -> Foot(time,1) -> 4 -> Face(time,1) -> 1 -> Foot(time,1)
+	</Procedure>
+	<PictureData>ftp:\\10.25.18.30\foo\bar\something.jpg</PictureData>
+</WarningData>
+<WarningData>
+	<AlarmTypeID>2</AlarmTypeID>
+	<AlarmTime>2016-04-12 08:48:54.000</AlarmTime>
+	<Score>65.2</Score>
+	<DeviceID>1</DeviceID>
+	<ChannelID>2</ChannelID>
+	<DateAttribute>1</DateAttribute>
+	<TimeAttribute>1</TimeAttribute>
+	<Procedure>Closing(time,1) -> 4 -> Foot(time,1) -> 4 -> Face(time,1) -> 1 -> Foot(time,1)
+	</Procedure>
+	<PictureData>ftp:\\10.25.18.30\foo\bar\something.jpg</PictureData>
+</WarningData>
+<WarningData>
+	<AlarmTypeID>2</AlarmTypeID>
+	<AlarmTime>2016-04-12 08:48:54.000</AlarmTime>
+	<Score>65.2</Score>
+	<DeviceID>1</DeviceID>
+	<ChannelID>2</ChannelID>
+	<DateAttribute>1</DateAttribute>
+	<TimeAttribute>1</TimeAttribute>
 	<Procedure>Closing(time,1) -> 4 -> Foot(time,1) -> 4 -> Face(time,1) -> 1 -> Foot(time,1)
 	</Procedure>
 	<PictureData>ftp:\\10.25.18.30\foo\bar\something.jpg</PictureData>

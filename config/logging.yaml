@@ -4,9 +4,9 @@ disable_existing_loggers: False
 
 formatters:
     simple:
-        format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s\r\n"
+        format: "%(asctime)s %(filename)s[line:%(lineno)d] %(threadName)s %(levelname)s %(message)s"
     simpleconsole:
-        format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+        format: "%(asctime)s %(filename)s[line:%(lineno)d] %(threadName)s %(levelname)s %(message)s"
 handlers:
     console:
         class: logging.StreamHandler

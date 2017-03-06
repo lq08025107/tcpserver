@@ -106,7 +106,7 @@ class EventProcessThread(Thread):
             # 执行操作1=============
             #print str(params)
             #id 包id
-            id = params['1'].encode("utf-8")
+            id = int(params['1'].encode("utf-8"))
             user =  params['2'].encode("utf-8")
             time = params['3'].encode("utf-8")
             operation = params['4'].encode("utf-8")
@@ -118,7 +118,7 @@ class EventProcessThread(Thread):
             eventList = sqlcluster.selectAlarmEventByPackageId(id)
             #将处理的包中的所有的event移到Record中
             for event in eventList:
-                self.event2record(eventList['ID'], user, time, operation)
+                self.event2record(event['ID'], user, time, operation)
             RetCode = id
             # RetInfo = [(1, "11111"), (2, "22222")]
         elif type == 102:
@@ -206,6 +206,7 @@ class PCProcessThread(Thread):
         Thread.__init__(self)
         self.auSco = GlobalParams.GetAutoScoreInstance()
         self.IsRunning = True
+        self.sqlcluster = SQLCluster()
 
     def StopThread(self):
         self.IsRunning = False
@@ -213,8 +214,11 @@ class PCProcessThread(Thread):
     def run(self):
         logger.info("ProcessCoreListener " + self.getName() + " Start Running")
         while self.IsRunning:
-            packageid = self.auSco.respQueue.get()
-            self.sqlcluster.updatePackageFinishInfo(packageid)
+            msg = self.auSco.respQueue.get()
+
+            self.sqlcluster.updatePackageFinishInfo(msg['packageId'], msg['userName'], msg['time'],msg['record'])
+
+            logger.info(msg)
 
         logger.info("ProcessCoreListener " + self.getName() + " Stop Running")
 

@@ -59,7 +59,7 @@ def initProcessThread():
 
     for i in range(0, GlobalParams.PCInitCount):
         pcProcessThread = PCProcessThread()
-        GlobalParams.StoreProcessThreads.append(pcProcessThread)
+        GlobalParams.PCProcessThreads.append(pcProcessThread)
         pcProcessThread.start()
 
 

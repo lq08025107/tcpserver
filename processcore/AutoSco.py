@@ -10,8 +10,8 @@ import time
 import threadpool
 import AlarmUtil
 from LogModule import setup_logging
-import logging
 
+import logging
 setup_logging()
 logger = logging.getLogger(__name__)
 # 配置utf-8输出环境
@@ -38,6 +38,7 @@ class AlarmNode:
         self.alarmDura = alarmDura
         self.alarmList = []
         self.alarmScoreMap = {}
+        self.packageId = -1
         self.preTime = 0
         self.duration = 0
         self.accu_threshold = accu_threshold
@@ -45,7 +46,7 @@ class AlarmNode:
         self.respQueue = Queue.Queue(maxsize=self.resp_que_size)
         self.max_alarm_level = max_alarm_level
         self.parentRespQueue = parentRespQueue
-        self.logger = Log.Logger.getInstance()
+        self.logger = logger
         self.isStop= True
         self.threads = threadpool.makeRequests(self.alaMsg, [(None, None)])
         self.lock = threading.Lock()
@@ -56,41 +57,49 @@ class AlarmNode:
         self.alarmUtil = AlarmUtil.AlarmUtil()
 
 
-    def endPackage(self, reason):
+    def endPackage(self, reason, packageId, userName=None, time=None, record=None):
         self.alarmList = []
         self.alarmScoreMap = {}
         self.preTime = 0
         self.duration = 0
         self.currentAlarmLevel = {'level': 0, 'alarmId': 0}
         self.maxAlarmId = 0
-        self.parentRespQueue.put({'packageId': 0, 'reason': reason})
-
+        self.parentRespQueue.put({'packageId': packageId, 'reason': reason, 'userName': userName, 'time': time, 'record': record})
+        if packageId == self.packageId:
+            self.packageId = -1
     def start(self):
+
         self.threadpo.putRequest(self.threads[0])
 
+
+
     def alaMsg(self):
-        logger.debug('org %s, begin a new package!' % (self.org))
-        #开启一个新包的线程
-        self.packageId = self.alarmUtil.createPackage(self.org, 1, False)
+
         while True:
-            try:
-                msg = self.reqQueue.get(True, 1)
-            except:
-                if self.isStop:
-                    logger.debug('org %d end package for timeout' % (self.org))
-                    self.endPackage('timeout')
-                    break
-                else:
-                    continue
+
+            msg = self.reqQueue.get()
+            self.logger.debug("org %s, get msg %s" % (self.org, msg))
             if 'stop' in msg:
-                logger.debug('org %d end package by user' % (self.org))
-                self.endPackage('user')
-                self.isStop = True
+                self.logger.debug('org %d end self.packageId: %s, package by %s' % (self.org, self.packageId, msg['stop']))
+                if 'userName' in msg:
+                    if self.packageId == msg['packageId']:
+                        self.isStop = True
+                    self.endPackage(msg['stop'], msg['packageId'], msg['userName'], msg['time'], msg['record'])
+                elif self.packageId > 0:
+                    self.endPackage(msg['stop'], self.packageId)
+                    self.isStop = True
+                self.logger.debug('self.isstop: %s' % (self.isStop))
                 break
+            if self.isStop == True:
+                self.logger.debug('org %s, begin a new package!' % (self.org))
+                # 开启一个新包的线程
+
+                self.packageId = self.alarmUtil.createPackage(self.org, msg['currentAlarmLevel'], msg['id'])
+                self.isStop = False
             alarmId = msg['alarmId']
             deviceId = msg['deviceId']
             level = msg['currentAlarmLevel']
-            logger.debug('get msg: %s, duration: %s, current list: %s, current map: %s, level: %s'
+            self.logger.debug('get msg: %s, duration: %s, current list: %s, current map: %s, level: %s'
                               % (msg, self.duration, self.alarmList, self.alarmScoreMap, self.currentAlarmLevel))
 
             self.alarmList.append(alarmId)
@@ -109,7 +118,7 @@ class AlarmNode:
 
             self.preTime = time.time()
             self.duration = self.alarmDura[alarmId]
-            logger.debug('get msg: %s, duration: %s, current list: %s, current map: %s, level: %s'
+            self.logger.debug('get msg: %s, duration: %s, current list: %s, current map: %s, level: %s'
                               % (msg, self.duration, self.alarmList, self.alarmScoreMap, self.currentAlarmLevel))
             #更新包
             self.alarmUtil.updatePackageInfo(self.packageId, msg['id'], self.currentAlarmLevel['level'])
@@ -126,7 +135,7 @@ class AutoScore:
 
     count = 1
     def __init__(self):
-        self.logger = Log.Logger.getInstance()
+        self.logger = logger
         cp = ConfigParser.SafeConfigParser()
         cp.read('processcore\db.ini')
         self.req_que_size = (int)(cp.get('autoLevel', 'req_que_size'))
@@ -149,7 +158,7 @@ class AutoScore:
                                              resp_que_size=self.resp_que_size, threadpo=self.threadpo,
                                              alarmDura=self.alarmDura, accu_threshold=self.accu_threshold,
                                              max_alarm_level=self.max_alarm_level, parentRespQueue=self.respQueue)
-        logger.info('init: %s, %s' % (self.alarmDura, children))
+        self.logger.info('init: %s, %s' % (self.alarmDura, children))
         self.root.setChildren(children)
         self.alaMsgTask = threadpool.makeRequests(self.alaMsg, [(None, None)])
         self.scanTimeTask = threadpool.makeRequests(self.scanTime, [(None, None)])
@@ -166,12 +175,13 @@ class AutoScore:
         while True:
             for i in self.root.children:
                 leftSeconds = self.root.children[i].duration - (time.time() - self.root.children[i].preTime);
-                #if leftSeconds >= 0:
-                    #self.logger.debug('org %d close to %ds' % (self.root.children[i].org, leftSeconds))
-                if (leftSeconds < 0):
-                    self.root.children[i].isStop = True
+                #if leftSeconds >= -10:
+                #    self.logger.debug('org %d close to %ds' % (self.root.children[i].org, leftSeconds))
+                #    self.logger.debug(self.root.children[i].isStop)
+                if (leftSeconds < 0 and not (self.root.children[i].isStop)):
+                    self.logger.debug('stop by timeout, orgId %s' % (self.root.children[i].org))
+                    self.root.children[i].reqQueue.put({'stop': 'timeout'})
                 if (not self.root.children[i].reqQueue.empty()) and self.root.children[i].isStop:
-                    self.root.children[i].isStop = False
                     self.root.children[i].start()
             time.sleep(1)
 
@@ -189,4 +199,5 @@ if __name__ == '__main__':
 # {'orgId': 1, 'deviceId': 2, 'alarmId': 1, 'dateArrId': 4, 'timeArrId': 5, 'currentAlarmLevel': 2}
 # {'orgId': 2, 'deviceId': 2, 'alarmId': 3, 'dateArrId': 4, 'timeArrId': 5, 'currentAlarmLevel': 2}
 # {'orgId': 3, 'deviceId': 2, 'alarmId': 3, 'dateArrId': 4, 'timeArrId': 5, 'currentAlarmLevel': 2}
-# {'orgId': 1, 'stop': 1}
+# {'orgId': 1, 'stop': 'user', 'userName': 'ss', 'time': '22-22', 'record': '11'}
+# {'orgId'
