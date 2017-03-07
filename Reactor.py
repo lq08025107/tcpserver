@@ -2,6 +2,7 @@ from twisted.web.resource import Resource
 from twisted.internet import reactor, endpoints
 from twisted.web import server
 from HTTPServer import ICBCHTTP
+from HTTPServer import RegisterHTTP
 from threading import Thread
 #from TCPServer import ICBCFactory
 from TCPServerPack import ICBCFactory
@@ -21,6 +22,7 @@ class TwistedProcessThread(Thread):
         # http in reactor
         root = Resource()
         root.putChild("data", ICBCHTTP())
+        root.putChild("register", RegisterHTTP())
         endpoints.serverFromString(reactor, "tcp:" + str(ServerConfig.HTTPSERVERPORT)).listen(server.Site(root))
         logger.info("HTTP Server listen on port: " + str(ServerConfig.HTTPSERVERPORT))
         # tcp in reactor
