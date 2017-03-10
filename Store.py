@@ -28,7 +28,6 @@ class StoreProcessThread(Thread):
                 message = self.StoreQueue.get()
                 parser = MsgParser()
                 try:
-
                     dataList = parser.parseAlarmEvent(message)
                     alarmUtil = AlarmUtil()
                     alarmUtil.saveAlarmInfo(dataList)

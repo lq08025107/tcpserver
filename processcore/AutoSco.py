@@ -158,7 +158,7 @@ class AutoScore:
                                              resp_que_size=self.resp_que_size, threadpo=self.threadpo,
                                              alarmDura=self.alarmDura, accu_threshold=self.accu_threshold,
                                              max_alarm_level=self.max_alarm_level, parentRespQueue=self.respQueue)
-        self.logger.info('init: %s, %s' % (self.alarmDura, children))
+        self.logger.debug('init: %s, %s' % (self.alarmDura, children))
         self.root.setChildren(children)
         self.alaMsgTask = threadpool.makeRequests(self.alaMsg, [(None, None)])
         self.scanTimeTask = threadpool.makeRequests(self.scanTime, [(None, None)])

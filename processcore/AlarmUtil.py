@@ -37,8 +37,8 @@ class AlarmUtil:
 
         parser = MsgParser()
         # save as db
-        insertsql = parser.constrAlarmEventSQL(dictAlarmEvent, alarmLevel)
-        id = self.ms.executeAndGetId(insertsql)
+
+        id = self.sqlcluster.insertAlarmEvent(dictAlarmEvent, alarmLevel)
         logger.info("Message has been inserted into db successfully, id: " + str(id))
 
         auSco = GlobalParams.GetAutoScoreInstance()

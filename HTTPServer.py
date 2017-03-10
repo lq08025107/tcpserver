@@ -1,7 +1,10 @@
+# coding=utf-8
 from twisted.web.resource import Resource
 from twisted.internet import reactor, endpoints
 from twisted.web import server
 import GlobalParams
+from MsgParserBox import MsgParser
+from CreateSQL import SQLCluster
 from LogModule import setup_logging
 import logging
 
@@ -33,10 +36,36 @@ class RegisterHTTP(Resource):
     def render_POST(self,request):
         logger.info("Received post register request from host: " + str(request.client.host) + ".")
         data = request.content.read()
-        logger.info("Received register data: " + data)
+        logger.debug("Received register data: " + data)
         #save register info
-
-        return '200'
+        msgparser = MsgParser()
+        sqlcluster = SQLCluster()
+        deviceId, channels = msgparser.parseRegisterData(data)
+        try:
+            if channels == {}:
+                #unregister device
+                deviceId = sqlcluster.selectDeviceId(deviceId)
+                sqlcluster.updateDeviceRegisterInfo(deviceId, 0)
+                sqlcluster.delChannelRegisterInfo(deviceId)
+                logger.info("Unregister device: " + str(deviceId))
+                return '200'
+            else:
+                #register device
+                deviceId = sqlcluster.selectDeviceId(deviceId)
+                sqlcluster.updateDeviceRegisterInfo(deviceId, 1)
+                for k, v in channels.items():
+                    inputDeviceId = deviceId
+                    channelno = k
+                    channelip = v[0]
+                    channelport = v[1]
+                    channelname = v[2]
+                    channeltype = v[3]
+                    sqlcluster.insertChannelRegisterInfo(str(channelname), channelno, channeltype, channelip, inputDeviceId, channelport)
+                logger.info("Register device: " + str(deviceId))
+                return '200'
+        except Exception, e:
+            logger.error("Error occured!!!", exc_info=True)
+            return '400'
 
 def start_http():
     #http in reactor

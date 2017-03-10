@@ -1,8 +1,8 @@
 #coding:utf-8
 
-DBHOST = "10.25.18.9"
+DBHOST = "10.25.12.15"
 DBPORT = "default"
 DBUSER = "sa"
-DBPWD = "p@ssw0rd"
+DBPWD = "sdt108"
 DBNAME = "IVAS"
 DBCHAR = "utf8"

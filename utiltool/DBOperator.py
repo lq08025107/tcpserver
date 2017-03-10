@@ -48,6 +48,7 @@ class MSSQL(object):
         if self._cursor._closed is True:
             self.__init__()
         if param == None:
+            print sql
             self._cursor.execute(sql)
         else:
             self._cursor.execute(sql, param)

@@ -51,24 +51,25 @@ class MsgParser(object):
         DeviceID = None
         try:
             xmlfile = minidom.parseString(xmlcontent)
-            DeviceID = xmlfile.getElementsByTagName("DeviceID")[0].childNodes[0].nodeValue
-            for channel in xmlfile.getElementsByTagName("Channel"):
-                channel_id = channel.getAttribute("id")
-                channel_ip = channel.getElementsByTagName("ChannelIP")[0].firstChild.nodeValue
-                channel_port = channel.getElementsByTagName("ChannelPort")[0].firstChild.nodeValue
-                Channels[channel_id] = [channel_ip, channel_port]
+            if xmlfile.getElementsByTagName("RegisterData") != None:
+                DeviceID = xmlfile.getElementsByTagName("DeviceID")[0].childNodes[0].nodeValue
+                for channel in xmlfile.getElementsByTagName("Channel"):
+                    channel_id = channel.getAttribute("id")
+                    channel_ip = channel.getElementsByTagName("ChannelIP")[0].firstChild.nodeValue
+                    channel_port = channel.getElementsByTagName("ChannelPort")[0].firstChild.nodeValue
+                    channel_name = channel.getElementsByTagName("ChannelName")[0].firstChild.nodeValue
+                    channel_type = channel.getElementsByTagName("ChannelType")[0].firstChild.nodeValue
+                    Channels[channel_id] = [channel_ip, channel_port, channel_name, channel_type]
+            else:
+                DeviceID = xmlfile.getElementsByTagName("DeviceID")[0].childNodes[0].nodeValue
 
         except Exception, e:
             logger.error("This is not a well formed xml.", exc_info=True)
 
         return DeviceID, Channels
 
-    def constrAlarmEventSQL(self, nodeList, alarmLevel):
-        query = "INSERT INTO AlarmEvent(DeviceID, ChannelID, AlarmTime, AlarmType, Score, PictrueUrl, ProcedureData, AlarmLevel) VALUES ("\
-                    + nodeList['DeviceID'] +","+ nodeList['ChannelID']+"," + "'" + nodeList['AlarmTime'] + "'"+ "," + nodeList['AlarmType']+"," + nodeList['Score'] \
-                    +"," +"'"+ nodeList['PictureData']+"'"+"," + "'" +nodeList['Procedure']+"'" + "," + str(alarmLevel) +")"
 
-        return query
+
 def main():
     msgparser = MsgParser()
     xml = """<?xml version="1.0" encoding="utf-8"?>

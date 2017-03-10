@@ -24,29 +24,30 @@ class MenTable:
         cols_table_name = cp.get('table', 'cols_table_name')
         alarm_level_table = cp.get('table', 'alarm_level_table');
         tables = cols_table_name.split(',')
-        logger.info("tables %s" % tables)
-        logger.info('relation_table_name: %s' % relation_table_name)
-        logger.info('table cnt: %s' % cols_cnt)
-        logger.info('alarm_level_table: %s' % alarm_level_table)
+        logger.debug("tables %s" % tables)
+        logger.debug('relation_table_name: %s' % relation_table_name)
+        logger.debug('table cnt: %s' % cols_cnt)
+        logger.debug('alarm_level_table: %s' % alarm_level_table)
 
         conn = MysqlCon.MySqlUtil()
         item = conn.getTableNames(tables)
-        logger.info('item: %s' % item)
+        logger.debug('item: %s' % item)
 
         self.arr = self.getList(item, 0)
-        logger.info('arr: %s' % self.arr)
+        logger.debug('arr: %s' % self.arr)
         results = conn.fetchRows(relation_table_name)
-        logger.info('result: %s' % results)
+        logger.debug('result: %s' % results)
 
         levels = conn.fetchRows(alarm_level_table)
 
         for i in results:
-            self.arr[i[1] - 1][i[2] - 1][i[4] - 1][i[5] - 1][i[6] - 1] = levels[i[9] - 1][0]
-        logger.info('arr: %s' % json.dumps(self.arr, encoding='UTF-8', ensure_ascii=False))
+            #self.arr[i[1] - 1][i[2] - 1][i[4] - 1][i[5] - 1][i[6] - 1] = levels[i[9] - 1][0]
+            self.arr[i[1] - 1][i[2] - 1][i[4] - 1][i[5] - 1][i[6] - 1] = i[9]
+        logger.debug('arr: %s' % json.dumps(self.arr, encoding='UTF-8', ensure_ascii=False))
 
     def getList(self, arr, index):
         if index == len(arr) - 1:
-            return [0] * arr[index]
+            return [1] * arr[index]
         else:
             cur_list = []
             for i in range(arr[index]):

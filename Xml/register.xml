@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RegisterData>
+    <DeviceInfo>
+		<DeviceID>1</DeviceID>
+    </DeviceInfo>
+    <Channels>
+        <Channel id="1">
+            <ChannelIP>10.25.18.9</ChannelIP>
+            <ChannelPort>8080</ChannelPort>
+            <ChannelName>原理样机通道</ChannelName>
+            <ChannelType>3000</ChannelType>
+        </Channel>
+        <Channel id="2">
+            <ChannelIP>10.25.18.9</ChannelIP>
+            <ChannelPort>8080</ChannelPort>
+            <ChannelName>原理样机通道</ChannelName>
+            <ChannelType>3000</ChannelType>
+        </Channel>
+    </Channels>
+</RegisterData>

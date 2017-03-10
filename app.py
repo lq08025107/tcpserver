@@ -1,3 +1,4 @@
 import GlobalParams
 
-GlobalParams.initProcessThread()
+if __name__ == '__main__':
+    GlobalParams.initProcessThread()
