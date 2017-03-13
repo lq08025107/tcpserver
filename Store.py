@@ -24,7 +24,7 @@ class StoreProcessThread(Thread):
 
         while self.IsRunning:
             while self.StoreQueue.not_empty:
-                ms = MSSQL()
+
                 message = self.StoreQueue.get()
                 parser = MsgParser()
                 try:

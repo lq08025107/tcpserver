@@ -1,9 +1,0 @@
-<Operator id="123456">
-    <Type>100</Type>
-    <Params>
-        <Param id="1">1000</Param>
-        <Param id="2">1001</Param>
-        <Param id="3">1002</Param>
-        <Param id="4">1003</Param>
-    </Params>
-</Operator>

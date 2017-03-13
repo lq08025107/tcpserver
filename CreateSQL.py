@@ -5,8 +5,11 @@ from utiltool.DBOperator import MSSQL
 import logging
 
 class SQLCluster():
-    def __init__(self):
-        self.ms = MSSQL()
+    def __init__(self, choice = 'd'):
+        if choice == 'd':
+            self.ms = MSSQL()
+        else:
+            self.ms = MSSQL(choice)
 
     def insertAlarmEvent(self, nodeList, alarmLevel):
 
@@ -101,6 +104,29 @@ class SQLCluster():
     def delChannelRegisterInfo(self, deviceId):
         sql = "DELETE FROM Channel WHERE InputDeviceID = " + str(deviceId)
         self.ms.ExecNonQuery(sql)
+
+    def selectDictInfo(self, tableName):
+        sql = "SELECT * FROM " + str(tableName)
+        rows = self.ms.ExecQuery(sql)
+        return rows
+
+    def moveEvent2Record(self, id, procUserName, procTime, procRecord):
+        selectsql = "SELECT DeviceID, ChannelID, AlarmTime, AlarmType, Score, PictrueUrl, \
+            Status, ProcedureData, AlarmLevel, PackageID FROM AlarmEvent where ID=" + str(id)
+
+        resList = self.ms.ExecQuery(selectsql)[0]
+        orgId = self.selectOrgIdByPackageId(resList['PackageID'])
+        insertsql = "INSERT INTO AlarmEventRecord (OrgID, DeviceID, AlarmTime, AlarmType, ChannelID, Score, PictrueUrl, ProcUserName," \
+                    "ProcTime, ProcRecord, ProcedureData,AlarmLevel, PackageID) VALUES (" + str(orgId) + "," + str(
+            resList["DeviceID"]) + "," + "'" + str(resList["AlarmTime"]) + "'" + "," + str(resList["AlarmType"]) \
+                    + "," + str(resList["ChannelID"]) + "," + str(resList["Score"]) + "," + "'" + str(
+            resList["PictrueUrl"]) + "'" \
+                    + "," + "'" + str(procUserName) + "'" + "," + "'" + str(procTime) + "'" + "," + "'" + str(
+            procRecord) + "'" + "," + "'" + str(resList["ProcedureData"]) + "'" + "," + str(resList["AlarmLevel"]) + "," \
+                    + str(resList["PackageID"]) + ")"
+        deletesql = "DELETE FROM AlarmEvent where ID=" + str(id)
+
+        self.ms.ExecMove(id, insertsql, deletesql)
 if __name__ == '__main__':
     sqlcluster = SQLCluster()
     sqlcluster.delChannelRegisterInfo(1)

@@ -11,7 +11,7 @@ setup_logging()
 logger = logging.getLogger(__name__)
 class AlarmUtil:
     def __init__(self):
-        self.ms = MSSQL()
+
         self.sqlcluster = SQLCluster()
     '''
 

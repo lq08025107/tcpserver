@@ -10,13 +10,13 @@ formatters:
 handlers:
     console:
         class: logging.StreamHandler
-        level: INFO
+        level: DEBUG
         formatter: simpleconsole
         stream: ext://sys.stdout
 
     info_file_handler:
         class: logging.handlers.RotatingFileHandler
-        level: INFO
+        level: DEBUG
         formatter: simple
         filename: info.log
         maxBytes: 104857600 #100MB

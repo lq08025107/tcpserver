@@ -1,4 +1,3 @@
-import Queue
 import random
 from LogicCoreModule import EventProcessThread
 from LogicCoreModule import NoticeProcessThread

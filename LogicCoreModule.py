@@ -140,30 +140,36 @@ class EventProcessThread(Thread):
         return RetCode, RetInfo
 
     def event2record(self, id, procUserName, procTime, procRecord):
-        ms = MSSQL()
+        sqlcluster = SQLCluster()
         try:
-            selectsql = "SELECT DeviceID, ChannelID, AlarmTime, AlarmType, Score, PictrueUrl, \
-            Status, ProcedureData, AlarmLevel, PackageID FROM AlarmEvent where ID=" + str(id)
-            sqlcluster = SQLCluster()
-
-            resList = ms.ExecQuery(selectsql)[0]
-            orgId = sqlcluster.selectOrgIdByPackageId(resList['PackageID'])
-            insertsql = "INSERT INTO AlarmEventRecord (OrgID, DeviceID, AlarmTime, AlarmType, ChannelID, Score, PictrueUrl, ProcUserName," \
-                        "ProcTime, ProcRecord, ProcedureData,AlarmLevel, PackageID) VALUES (" + str(orgId) + "," + str(
-                resList["DeviceID"]) + "," + "'" + str(resList["AlarmTime"]) + "'" + "," + str(resList["AlarmType"]) \
-                        + "," + str(resList["ChannelID"]) + "," + str(resList["Score"]) + "," + "'" + str(
-                resList["PictrueUrl"]) + "'" \
-                        + "," + "'" + str(procUserName) + "'" + "," + "'" + str(procTime) + "'" + "," + "'" + str(
-                procRecord) + "'" + "," + "'" + str(resList["ProcedureData"]) + "'" + "," + str(resList["AlarmLevel"]) +","\
-                        +str(resList["PackageID"])+ ")"
-            deletesql = "DELETE FROM AlarmEvent where ID=" + str(id)
-            print insertsql
-
-            ms.ExecMove(id, insertsql, deletesql)
+            sqlcluster.moveEvent2Record(id, procUserName, procTime, procRecord)
             logger.info("%s process a package and write: %s" % (str(procUserName), str(procRecord)))
-
         except Exception, e:
             logger.error(e, exc_info=True)
+    # def event2record(self, id, procUserName, procTime, procRecord):
+    #     ms = MSSQL()
+    #     try:
+    #         selectsql = "SELECT DeviceID, ChannelID, AlarmTime, AlarmType, Score, PictrueUrl, \
+    #         Status, ProcedureData, AlarmLevel, PackageID FROM AlarmEvent where ID=" + str(id)
+    #         sqlcluster = SQLCluster()
+    #
+    #         resList = ms.ExecQuery(selectsql)[0]
+    #         orgId = sqlcluster.selectOrgIdByPackageId(resList['PackageID'])
+    #         insertsql = "INSERT INTO AlarmEventRecord (OrgID, DeviceID, AlarmTime, AlarmType, ChannelID, Score, PictrueUrl, ProcUserName," \
+    #                     "ProcTime, ProcRecord, ProcedureData,AlarmLevel, PackageID) VALUES (" + str(orgId) + "," + str(
+    #             resList["DeviceID"]) + "," + "'" + str(resList["AlarmTime"]) + "'" + "," + str(resList["AlarmType"]) \
+    #                     + "," + str(resList["ChannelID"]) + "," + str(resList["Score"]) + "," + "'" + str(
+    #             resList["PictrueUrl"]) + "'" \
+    #                     + "," + "'" + str(procUserName) + "'" + "," + "'" + str(procTime) + "'" + "," + "'" + str(
+    #             procRecord) + "'" + "," + "'" + str(resList["ProcedureData"]) + "'" + "," + str(resList["AlarmLevel"]) +","\
+    #                     +str(resList["PackageID"])+ ")"
+    #         deletesql = "DELETE FROM AlarmEvent where ID=" + str(id)
+    #
+    #         ms.ExecMove(id, insertsql, deletesql)
+    #         logger.info("%s process a package and write: %s" % (str(procUserName), str(procRecord)))
+    #
+    #     except Exception, e:
+    #         logger.error(e, exc_info=True)
 
 class NoticeProcessThread(Thread):
     def __init__(self):

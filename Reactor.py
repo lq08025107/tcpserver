@@ -6,7 +6,7 @@ from HTTPServer import RegisterHTTP
 from threading import Thread
 #from TCPServer import ICBCFactory
 from TCPServerPack import ICBCFactory
-from config import ServerConfig
+import ConfigParser
 from LogModule import setup_logging
 import logging
 
@@ -15,6 +15,10 @@ logger = logging.getLogger(__name__)
 
 class TwistedProcessThread(Thread):
     def __init__(self):
+        self.cp = ConfigParser.SafeConfigParser()
+        self.cp.read('config\config.ini')
+        self.tcp_port = str(self.cp.get('server', 'tcp_server_port'))
+        self.http_port = str(self.cp.get('server', 'http_server_port'))
         Thread.__init__(self)
 
     def run(self):
@@ -23,25 +27,27 @@ class TwistedProcessThread(Thread):
         root = Resource()
         root.putChild("data", ICBCHTTP())
         root.putChild("register", RegisterHTTP())
-        endpoints.serverFromString(reactor, "tcp:" + str(ServerConfig.HTTPSERVERPORT)).listen(server.Site(root))
-        logger.info("HTTP Server listen on port: " + str(ServerConfig.HTTPSERVERPORT))
+        endpoints.serverFromString(reactor, "tcp:" + self.http_port).listen(server.Site(root))
+        logger.info("HTTP Server listen on port: " + self.http_port)
         # tcp in reactor
-        ICBCEndpoint = endpoints.serverFromString(reactor, "tcp:" + str(ServerConfig.TCPSERVERPORT))
+        ICBCEndpoint = endpoints.serverFromString(reactor, "tcp:" + self.tcp_port)
         ICBCEndpoint.listen(ICBCFactory())
-        logger.info("TCP Server listen on port: " + str(ServerConfig.TCPSERVERPORT))
+        logger.info("TCP Server listen on port: " + self.tcp_port)
         # start the reactor
         logger.info("Reactor has started.")
         reactor.run(installSignalHandlers=0)
-        logger.info("Store " + self.getName() + " Stop Run")
+
 
 
 def start_reactor():
+    cp = ConfigParser.SafeConfigParser()
+    cp.read('config\config.ini')
     #http in reactor
     root = Resource()
     root.putChild("data", ICBCHTTP())
-    endpoints.serverFromString(reactor, "tcp:" + str(ServerConfig.HTTPSERVERPORT)).listen(server.Site(root))
+    endpoints.serverFromString(reactor, "tcp:" + str(cp.get('server', 'http_server_port'))).listen(server.Site(root))
     #tcp in reactor
-    ICBCEndpoint = endpoints.serverFromString(reactor, "tcp:" + str(ServerConfig.TCPSERVERPORT))
+    ICBCEndpoint = endpoints.serverFromString(reactor, "tcp:" + str(cp.get('server', 'tcp_server_port')))
     ICBCEndpoint.listen(ICBCFactory())
     #start the reactor
     logger.info("Reactor has started.")

@@ -2,7 +2,7 @@ from pyftpdlib.authorizers import DummyAuthorizer
 from pyftpdlib.handlers import FTPHandler
 from pyftpdlib.servers import FTPServer
 from threading import Thread
-from config import ServerConfig
+import ConfigParser
 from LogModule import setup_logging
 import logging
 
@@ -23,7 +23,8 @@ class FTPServerThread(Thread):
 
         handler = FTPHandler
         handler.authorizer = authorizer
-
-        server = FTPServer((ServerConfig.FTPSERVERHOST, ServerConfig.FTPSERVERPORT), handler)
+        cp = ConfigParser.SafeConfigParser()
+        cp.read('config\config.ini')
+        server = FTPServer((int(cp.get('server','ftp_server_host')), int(cp.get('server','ftp_server_port'))), handler)
         server.serve_forever()
         logger.info("Store " + self.getName() + " Stop Run")

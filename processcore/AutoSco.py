@@ -1,7 +1,5 @@
 # coding=utf-8
-import Log
 import ConfigParser
-import MysqlCon
 import sys
 import Queue
 import json
@@ -137,7 +135,7 @@ class AutoScore:
     def __init__(self):
         self.logger = logger
         cp = ConfigParser.SafeConfigParser()
-        cp.read('processcore\db.ini')
+        cp.read('config\config.ini')
         self.req_que_size = (int)(cp.get('autoLevel', 'req_que_size'))
         self.resp_que_size = (int)(cp.get('autoLevel', 'resp_que_size'))
         self.threadpoolSize = (int)(cp.get('autoLevel', 'threadpoolSize'))
